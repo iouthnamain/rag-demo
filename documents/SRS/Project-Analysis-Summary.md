@@ -3,7 +3,7 @@
 
 **Analysis Date:** December 2024  
 **Analyst:** System Analyst  
-**Project Version:** 1.1
+**Project Version:** 1.2
 
 ---
 
@@ -69,7 +69,7 @@
 ### System Capabilities
 1. **Document Ingestion**: Processes DOCX files and creates vector embeddings
 2. **Intelligent Q&A**: Classifies questions and provides context-aware responses
-3. **Feedback System**: Collects user feedback and learns from interactions
+3. **Feedback System**: Collects user feedback and learns from interactions, with offline support
 4. **Conversation Management**: Maintains conversation history and context with reset capability
 5. **Markdown Rendering**: Rich text formatting for bot responses
 6. **User Controls**: Keyboard shortcuts and conversation reset functionality

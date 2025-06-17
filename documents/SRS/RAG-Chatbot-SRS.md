@@ -1,7 +1,7 @@
 # Software Requirements Specification (SRS)
 # RAG Chatbot - Tư Vấn Nghề Nghiệp
 
-**Version:** 1.1  
+**Version:** 1.2  
 **Date:** December 2024  
 **Project:** RAG-based Career Counseling Chatbot  
 **Technology Stack:** Next.js 15, TypeScript, Pinecone, Google Gemini AI, TailwindCSS
@@ -273,7 +273,7 @@ stateDiagram-v2
 **FR-3.4**: The system SHALL maintain feedback statistics  
 **FR-3.5**: The system SHALL support offline feedback storage when API is unavailable  
 **FR-3.6**: The system SHALL retry sending stored offline feedback when connectivity is restored  
-**FR-3.5**: The system SHALL support optional user comments  
+**FR-3.7**: The system SHALL support optional user comments  
 
 ### 3.4 Conversation Context Management
 
