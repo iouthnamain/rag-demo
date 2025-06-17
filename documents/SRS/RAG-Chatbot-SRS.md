@@ -1,7 +1,7 @@
 # Software Requirements Specification (SRS)
 # RAG Chatbot - Tư Vấn Nghề Nghiệp
 
-**Version:** 1.2  
+**Version:** 1.3  
 **Date:** December 2024  
 **Project:** RAG-based Career Counseling Chatbot  
 **Technology Stack:** Next.js 15, TypeScript, Pinecone, Google Gemini AI, TailwindCSS
@@ -51,7 +51,7 @@ graph TB
         ASK[/api/ask]
         ING[/api/ingest]
         FBK[/api/feedback]
-        TRPC[tRPC Routes]
+        
     end
     
     subgraph "Service Layer"
@@ -110,7 +110,6 @@ flowchart TD
     
     subgraph "Server Side"
         E[API Routes]
-        F[tRPC Server]
         G[Service Layer]
     end
     
@@ -133,12 +132,10 @@ flowchart TD
     end
     
     A --> E
-    B --> F
     C --> A
     D --> A
     
     E --> G
-    F --> G
     
     G --> H
     G --> I
@@ -444,7 +441,6 @@ graph TB
     
     subgraph "API Layer"
         E[Next.js API Routes]
-        F[tRPC Server]
         G[Request Validation]
         H[Error Handling]
     end
@@ -469,12 +465,10 @@ graph TB
     end
     
     A --> E
-    B --> F
     C --> A
     D --> A
     
     E --> I
-    F --> I
     G --> E
     H --> E
     
@@ -633,7 +627,7 @@ interface ConversationHistory {
 #### 8.1.2 Backend Technologies
 - **Runtime**: Node.js with Next.js API Routes
 - **Language**: TypeScript
-- **API Framework**: tRPC 11.0.0 for type-safe APIs
+- **API Framework**: REST API with Next.js API Routes
 - **Validation**: Zod 3.24.2 for schema validation
 - **Environment**: @t3-oss/env-nextjs for environment variable management
 
@@ -659,7 +653,7 @@ rag-demo/
 │   │   │   ├── ask/           # Question processing
 │   │   │   ├── feedback/      # Feedback collection
 │   │   │   ├── ingest/        # Document ingestion
-│   │   │   └── trpc/          # tRPC routes
+
 │   │   ├── layout.tsx         # Root layout
 │   │   └── page.tsx           # Main chat interface
 │   ├── lib/
@@ -669,9 +663,9 @@ rag-demo/
 │   │       ├── pineconeService.ts
 │   │       ├── documentProcessor.ts
 │   │       └── feedbackService.ts
-│   ├── server/                # tRPC server setup
+
 │   ├── styles/                # Global styles
-│   └── trpc/                  # tRPC client setup
+
 ├── documents/                 # Document storage
 │   └── SRS/                   # This documentation
 ├── public/                    # Static assets

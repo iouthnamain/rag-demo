@@ -211,14 +211,20 @@ The project now follows a clean, straightforward REST API architecture that is w
 
 ## Recent Updates
 
-### 1. Offline Feedback System (December 2024)
+### 1. SRS Documentation Update (December 2024)
+- **Updated**: Removed all tRPC references from SRS documentation
+- **Updated**: Fixed project structure diagrams and technology stack listings
+- **Updated**: Corrected API framework description to REST API with Next.js
+- **Version**: Updated to v1.3
+
+### 2. Offline Feedback System (December 2024)
 - **Added**: Local storage fallback for feedback when API is unavailable
 - **Added**: Automatic retry mechanism for pending feedback
 - **Fixed**: "Failed to fetch" error when submitting feedback
 - **Updated**: SRS documentation with offline feedback requirements
-- **Version**: Updated to v1.2
+- **Version**: Updated to v1.3
 
-### 2. Reset Button Feature (December 2024)
+### 3. Reset Button Feature (December 2024)
 - **Added**: Conversation reset button in the header section
 - **Added**: Keyboard shortcut (Ctrl+Shift+C) for conversation reset
 - **Added**: Confirmation dialog before clearing conversations

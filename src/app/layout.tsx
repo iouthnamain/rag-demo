@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 
 import { type Metadata } from "next";
 import { Open_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
   title: "RAG Chatbot - Tư Vấn Nghề Nghiệp",
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${openSans.variable}`}>
       <body className={`${openSans.className}`} suppressHydrationWarning={true}>
+        <Analytics />
         {children}
       </body>
     </html>
