@@ -55,7 +55,15 @@ export default function Home() {
   const [systemStatus, setSystemStatus] = useState<SystemStatus | null>(null);
   const [isIngesting, setIsIngesting] = useState(false);
   const isHydrated = useHydration();
-  const [conversationId] = useState(() => Date.now().toString());
+  const [conversationId, setConversationId] = useState(() => Date.now().toString());
+
+  // Reset conversation function
+  const resetConversation = () => {
+    if (messages.length === 0 || window.confirm('Bạn có chắc chắn muốn xóa tất cả tin nhắn?')) {
+      setMessages([]);
+      setConversationId(Date.now().toString());
+    }
+  };
 
   // Generate unique ID function
   const generateId = () => {
@@ -201,23 +209,47 @@ export default function Home() {
       const userMessage = messages[messageIndex - 1];
       const question = userMessage?.content || '';
 
-      // Send feedback to API
-      await fetch('/api/feedback', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          question,
-          answer: message.content,
-          rating,
-          isCareerRelated: message.isCareerRelated,
-          sources: message.sources,
-          hasRelevantContent: message.hasRelevantContent,
-        }),
-      });
+      // Prepare feedback data
+      const feedbackData = {
+        question,
+        answer: message.content,
+        rating,
+        isCareerRelated: message.isCareerRelated,
+        sources: message.sources,
+        hasRelevantContent: message.hasRelevantContent,
+      };
 
-      // Update message to show feedback was given
+      try {
+        // Send feedback to API with error handling
+        const response = await fetch('/api/feedback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(feedbackData),
+        });
+        
+        if (!response.ok) {
+          throw new Error(`Server responded with status: ${response.status}`);
+        }
+      } catch (apiError) {
+        console.error('API Error sending feedback:', apiError);
+        
+        // Store feedback locally as fallback
+        try {
+          const localFeedback = JSON.parse(localStorage.getItem('pendingFeedback') || '[]');
+          localFeedback.push({
+            ...feedbackData,
+            timestamp: new Date().toISOString(),
+          });
+          localStorage.setItem('pendingFeedback', JSON.stringify(localFeedback));
+          console.log('Feedback stored locally as fallback');
+        } catch (storageError) {
+          console.error('Failed to store feedback locally:', storageError);
+        }
+      }
+
+      // Update message to show feedback was given (regardless of API success)
       setMessages(prev => prev.map((msg, idx) => 
         idx === messageIndex 
           ? { ...msg, feedbackGiven: true }
@@ -225,7 +257,7 @@ export default function Home() {
       ));
 
     } catch (error) {
-      console.error('Error sending feedback:', error);
+      console.error('Error in feedback handling:', error);
     }
   };
 
@@ -233,8 +265,75 @@ export default function Home() {
   React.useEffect(() => {
     if (isHydrated) {
       void checkSystemStatus();
+      
+      // Try to send any pending feedback
+      void retryPendingFeedback();
     }
   }, [isHydrated]);
+
+  // Function to retry sending any pending feedback
+  const retryPendingFeedback = async () => {
+    try {
+      // Define the feedback item type
+      interface PendingFeedbackItem {
+        question: string;
+        answer: string;
+        rating: 'positive' | 'negative' | 'neutral';
+        isCareerRelated?: boolean;
+        sources?: string[];
+        hasRelevantContent?: boolean;
+        timestamp: string;
+      }
+      
+      const pendingFeedback = JSON.parse(localStorage.getItem('pendingFeedback') || '[]') as PendingFeedbackItem[];
+      if (pendingFeedback.length === 0) return;
+      
+      console.log(`Found ${pendingFeedback.length} pending feedback items to retry`);
+      
+      const successfulItems: number[] = [];
+      
+      for (let i = 0; i < pendingFeedback.length; i++) {
+        const feedback = pendingFeedback[i];
+        try {
+          const response = await fetch('/api/feedback', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(feedback),
+          });
+          
+          if (response.ok) {
+            successfulItems.push(i);
+            console.log(`Successfully sent pending feedback item ${i+1}/${pendingFeedback.length}`);
+          }
+        } catch (error) {
+          console.error(`Failed to retry sending feedback item ${i+1}/${pendingFeedback.length}:`, error);
+        }
+      }
+      
+      // Remove successfully sent items
+      if (successfulItems.length > 0) {
+        const remainingFeedback = pendingFeedback.filter((_: PendingFeedbackItem, index: number) => !successfulItems.includes(index));
+        localStorage.setItem('pendingFeedback', JSON.stringify(remainingFeedback));
+        console.log(`Removed ${successfulItems.length} successfully sent feedback items. ${remainingFeedback.length} items remaining.`);
+      }
+    } catch (error) {
+      console.error('Error retrying pending feedback:', error);
+    }
+  };
+
+  // Add keyboard shortcut for reset (Ctrl+Shift+C)
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+        resetConversation();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [resetConversation]);
 
   // Show loading state during hydration
   if (!isHydrated) {
@@ -297,6 +396,19 @@ export default function Home() {
                 >
                   {isIngesting ? 'Đang khởi tạo...' : 'Khởi tạo dữ liệu'}
                 </button>
+                <button
+                  onClick={resetConversation}
+                  className="px-3 py-1 bg-red-100 text-red-700 rounded-md hover:bg-red-200 text-sm flex items-center group relative"
+                  title="Phím tắt: Ctrl+Shift+C"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                  Xóa cuộc hội thoại
+                  <span className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 px-2 py-1 bg-gray-800 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 whitespace-nowrap">
+                    Phím tắt: Ctrl+Shift+C
+                  </span>
+                </button>
               </div>
             </div>
           )}
@@ -306,6 +418,16 @@ export default function Home() {
         <div className="bg-white rounded-lg shadow-md">
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            {messages.length === 0 && (
+              <div className="flex justify-center items-center h-32">
+                <div className="text-center text-gray-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                  </svg>
+                  <p>Chưa có tin nhắn nào. Hãy bắt đầu cuộc trò chuyện!</p>
+                </div>
+              </div>
+            )}
             {messages.map((message, index) => (
               <div
                 key={index}

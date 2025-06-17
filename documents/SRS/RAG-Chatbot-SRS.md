@@ -1,7 +1,7 @@
 # Software Requirements Specification (SRS)
 # RAG Chatbot - Tư Vấn Nghề Nghiệp
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Date:** December 2024  
 **Project:** RAG-based Career Counseling Chatbot  
 **Technology Stack:** Next.js 15, TypeScript, Pinecone, Google Gemini AI, TailwindCSS
@@ -271,6 +271,8 @@ stateDiagram-v2
 **FR-3.2**: The system SHALL store feedback with question-answer pairs  
 **FR-3.3**: The system SHALL reuse positively-rated responses for similar questions  
 **FR-3.4**: The system SHALL maintain feedback statistics  
+**FR-3.5**: The system SHALL support offline feedback storage when API is unavailable  
+**FR-3.6**: The system SHALL retry sending stored offline feedback when connectivity is restored  
 **FR-3.5**: The system SHALL support optional user comments  
 
 ### 3.4 Conversation Context Management
@@ -282,6 +284,8 @@ The system maintains conversation history and context to provide more relevant r
 **FR-4.2**: The system SHALL use conversation context for better response generation  
 **FR-4.3**: The system SHALL assign unique conversation IDs  
 **FR-4.4**: The system SHALL limit context to recent messages (last 3 relevant messages)  
+**FR-4.5**: The system SHALL allow users to reset/clear conversation history  
+**FR-4.6**: The system SHALL generate a new conversation ID when conversation is reset  
 
 ---
 
@@ -290,11 +294,12 @@ The system maintains conversation history and context to provide more relevant r
 ### 4.1 User Interfaces
 
 #### 4.1.1 Main Chat Interface
-- **Header**: System title, status indicator, action buttons
+- **Header**: System title, status indicator, action buttons (status check, document ingestion, conversation reset)
 - **Chat Area**: Message history with user and assistant messages
 - **Input Area**: Text input field and send button
 - **Feedback Controls**: Rating buttons for each assistant response
 - **Source Display**: Document sources for career-related responses
+- **Empty State**: Visual indicator when no messages are present
 
 #### 4.1.2 System Administration Interface
 - **Status Dashboard**: System health, vector count, ingestion status
@@ -414,6 +419,8 @@ graph TD
 **NFR-4.4**: The user interface SHALL be intuitive and require no training  
 **NFR-4.5**: The system SHALL provide clear feedback for all user actions  
 **NFR-4.6**: Response formatting SHALL be readable and well-structured  
+**NFR-4.7**: The system SHALL provide keyboard shortcuts for common actions  
+**NFR-4.8**: The system SHALL display confirmation dialogs for destructive actions  
 
 #### 5.4.3 Scalability
 **NFR-4.7**: The system SHALL support horizontal scaling for increased load  

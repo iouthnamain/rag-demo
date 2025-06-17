@@ -3,7 +3,7 @@
 
 **Analysis Date:** December 2024  
 **Analyst:** System Analyst  
-**Project Version:** 1.0
+**Project Version:** 1.1
 
 ---
 
@@ -70,8 +70,9 @@
 1. **Document Ingestion**: Processes DOCX files and creates vector embeddings
 2. **Intelligent Q&A**: Classifies questions and provides context-aware responses
 3. **Feedback System**: Collects user feedback and learns from interactions
-4. **Conversation Management**: Maintains conversation history and context
+4. **Conversation Management**: Maintains conversation history and context with reset capability
 5. **Markdown Rendering**: Rich text formatting for bot responses
+6. **User Controls**: Keyboard shortcuts and conversation reset functionality
 
 ### Architecture Patterns
 - **Service-Oriented**: Modular service layer with clear separation of concerns
@@ -168,6 +169,8 @@ graph TD
 - Markdown-formatted responses
 - Interactive feedback system
 - Mobile-responsive design
+- Keyboard shortcuts (Ctrl+Shift+C for conversation reset)
+- Confirmation dialogs for destructive actions
 
 ---
 
