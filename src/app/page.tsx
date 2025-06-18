@@ -10,10 +10,12 @@ interface ChatMessage {
   content: string;
   timestamp: Date;
   sources?: string[];
+  webSources?: string[];
   hasRelevantContent?: boolean;
   isCareerRelated?: boolean;
   confidence?: number;
   feedbackGiven?: boolean;
+  usedWebSearch?: boolean;
 }
 
 interface SystemStatus {
@@ -56,6 +58,7 @@ export default function Home() {
   const [isIngesting, setIsIngesting] = useState(false);
   const isHydrated = useHydration();
   const [conversationId, setConversationId] = useState(() => Date.now().toString());
+  const [webSearchEnabled, setWebSearchEnabled] = useState(false);
 
   // Reset conversation function
   const resetConversation = () => {
@@ -157,7 +160,8 @@ export default function Home() {
         },
         body: JSON.stringify({ 
           question: inputMessage.trim(),
-          conversationId: conversationId
+          conversationId: conversationId,
+          webSearchEnabled: webSearchEnabled
         }),
       });
 
@@ -174,9 +178,11 @@ export default function Home() {
           content: data.data.answer,
           timestamp: new Date(),
           sources: data.data.sources,
+          webSources: data.data.webSources,
           hasRelevantContent: data.data.hasRelevantContent,
           isCareerRelated: data.data.isCareerRelated,
           confidence: data.data.confidence,
+          usedWebSearch: data.data.usedWebSearch,
         };
 
         setMessages(prev => [...prev, assistantMessage]);
@@ -449,6 +455,11 @@ export default function Home() {
                       }`}>
                         {message.isCareerRelated ? '💼 Tư vấn nghề nghiệp' : '💬 Trò chuyện'}
                       </span>
+                      {message.usedWebSearch && (
+                        <span className="px-2 py-1 rounded-full bg-purple-500 text-white">
+                          🔍 Web Search
+                        </span>
+                      )}
                       {message.confidence && (
                         <span className="text-gray-500">
                           Độ tin cậy: {Math.round(message.confidence * 100)}%
@@ -486,21 +497,41 @@ export default function Home() {
                     <div className="whitespace-pre-wrap">{message.content}</div>
                   )}
                   
-                  {message.type === 'assistant' && message.sources && message.sources.length > 0 && (
+                  {message.type === 'assistant' && ((message.sources?.length ?? 0) > 0 || (message.webSources?.length ?? 0) > 0) && (
                     <div className="mt-2 pt-2 border-t border-gray-200">
-                      <div className="text-xs text-gray-600">
-                        <strong>Nguồn tài liệu:</strong>
-                        <div className="flex flex-wrap gap-1 mt-1">
-                          {message.sources.map((source, idx) => (
-                            <span
-                              key={idx}
-                              className="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs"
-                            >
-                              {source}
-                            </span>
-                          ))}
+                      {message.sources && message.sources.length > 0 && (
+                        <div className="text-xs text-gray-600 mb-2">
+                          <strong>📄 Nguồn tài liệu:</strong>
+                          <div className="flex flex-wrap gap-1 mt-1">
+                            {message.sources.map((source, idx) => (
+                              <span
+                                key={idx}
+                                className="inline-block bg-gray-200 text-gray-700 px-2 py-1 rounded text-xs"
+                              >
+                                {source}
+                              </span>
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
+                      {message.webSources && message.webSources.length > 0 && (
+                        <div className="text-xs text-gray-600">
+                          <strong>🔗 Nguồn web:</strong>
+                          <div className="flex flex-wrap gap-1 mt-1">
+                            {message.webSources.map((source, idx) => (
+                              <a
+                                key={idx}
+                                href={source}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-block bg-purple-100 text-purple-700 px-2 py-1 rounded text-xs hover:bg-purple-200 transition-colors"
+                              >
+                                🔗 Web {idx + 1}
+                              </a>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
                   )}
 
@@ -557,22 +588,56 @@ export default function Home() {
 
           {/* Input */}
           <div className="border-t p-4">
+            {/* Web Search Toggle */}
+            <div className="flex items-center justify-between mb-3 p-2 bg-gray-50 rounded-lg">
+              <div className="flex items-center space-x-2">
+                <span className="text-sm font-medium text-gray-700">
+                  🔍 Tìm kiếm web
+                </span>
+                <span className="text-xs text-gray-500">
+                  (Bổ sung thông tin từ internet)
+                </span>
+              </div>
+              <button
+                onClick={() => setWebSearchEnabled(!webSearchEnabled)}
+                className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                  webSearchEnabled ? 'bg-blue-600' : 'bg-gray-300'
+                }`}
+              >
+                <span
+                  className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                    webSearchEnabled ? 'translate-x-6' : 'translate-x-1'
+                  }`}
+                />
+              </button>
+            </div>
+            
             <div className="flex space-x-2">
               <input
                 type="text"
                 value={inputMessage}
                 onChange={(e) => setInputMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-                placeholder="Nhập câu hỏi của bạn..."
+                placeholder={webSearchEnabled ? "Nhập câu hỏi của bạn (sẽ tìm kiếm trên web)..." : "Nhập câu hỏi của bạn..."}
                 className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                 disabled={isLoading || !systemStatus?.isReady}
               />
               <button
                 onClick={sendMessage}
                 disabled={isLoading || !inputMessage.trim() || !systemStatus?.isReady}
-                className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed flex items-center space-x-1"
               >
-                {isLoading ? '⏳' : '🚀'}
+                {isLoading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                    <span>⏳</span>
+                  </>
+                ) : (
+                  <>
+                    {webSearchEnabled && <span>🔍</span>}
+                    <span>🚀</span>
+                  </>
+                )}
               </button>
             </div>
           </div>

@@ -14,6 +14,8 @@ export const env = createEnv({
     PINECONE_INDEX_NAME: z.string().default("careerbot-index"),
     GEMINI_API_KEY: z.string().min(1).default("demo"),
     OPENAI_API_KEY: z.string().optional(),
+    // Web Search Configuration (optional) - Firecrawl
+    FIRECRAWL_API_KEY: z.string().optional().default("demo"),
   },
 
   /**
@@ -36,6 +38,7 @@ export const env = createEnv({
     PINECONE_INDEX_NAME: process.env.PINECONE_INDEX_NAME,
     GEMINI_API_KEY: process.env.GEMINI_API_KEY,
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    FIRECRAWL_API_KEY: process.env.FIRECRAWL_API_KEY,
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
   },
   /**

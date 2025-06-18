@@ -13,13 +13,16 @@ importers:
         version: 0.24.1
       '@langchain/community':
         specifier: ^0.3.46
-        version: 0.3.46(@browserbasehq/sdk@2.6.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.53.0)(deepmerge@4.3.1)(dotenv@16.5.0)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(zod@3.25.67))(@ibm-cloud/watsonx-ai@1.6.7)(@langchain/core@0.3.59(openai@4.104.0(ws@8.18.2)(zod@3.25.67)))(@pinecone-database/pinecone@6.1.1)(axios@1.10.0)(ibm-cloud-sdk-core@5.4.0)(ignore@5.3.2)(jsonwebtoken@9.0.2)(mammoth@1.9.1)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(playwright@1.53.0)(weaviate-client@3.6.2)(ws@8.18.2)
+        version: 0.3.46(@browserbasehq/sdk@2.6.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.53.0)(deepmerge@4.3.1)(dotenv@16.5.0)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(zod@3.25.67))(@ibm-cloud/watsonx-ai@1.6.7)(@langchain/core@0.3.59(openai@4.104.0(ws@8.18.2)(zod@3.25.67)))(@mendable/firecrawl-js@1.25.5)(@pinecone-database/pinecone@6.1.1)(axios@1.10.0)(ibm-cloud-sdk-core@5.4.0)(ignore@5.3.2)(jsonwebtoken@9.0.2)(mammoth@1.9.1)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(playwright@1.53.0)(weaviate-client@3.6.2)(ws@8.18.2)
       '@langchain/openai':
         specifier: ^0.5.13
         version: 0.5.13(@langchain/core@0.3.59(openai@4.104.0(ws@8.18.2)(zod@3.25.67)))(ws@8.18.2)
       '@langchain/textsplitters':
         specifier: ^0.1.0
         version: 0.1.0(@langchain/core@0.3.59(openai@4.104.0(ws@8.18.2)(zod@3.25.67)))
+      '@mendable/firecrawl-js':
+        specifier: ^1.25.5
+        version: 1.25.5
       '@pinecone-database/pinecone':
         specifier: ^6.1.1
         version: 6.1.1
@@ -775,6 +778,10 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       '@langchain/core': '>=0.2.21 <0.4.0'
+
+  '@mendable/firecrawl-js@1.25.5':
+    resolution: {integrity: sha512-cozEZipMdtyfAQKX8IFC8DW06cYd7CxL8cxwMaD61sQrWpLkGcpivoMEeSFuyJTKmobAYAT5EB5ZExUJSVJkXw==}
+    engines: {node: '>=22.0.0'}
 
   '@napi-rs/wasm-runtime@0.2.11':
     resolution: {integrity: sha512-9DPkXtvHydrcOsopiYpUgPHpmj0HWZKMUnL2dZqpvC42lsratuBG06V5ipyno0fUek5VlFsNQ+AcFATSrJXgMA==}
@@ -3288,6 +3295,9 @@ packages:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.9.0'
 
+  typescript-event-target@1.1.1:
+    resolution: {integrity: sha512-dFSOFBKV6uwaloBCCUhxlD3Pr/P1a/tJdcmPrTXCHlEFD3faj0mztjcGn6VBAhQ0/Bdy8K3VWrrqwbt/ffsYsg==}
+
   typescript@5.8.3:
     resolution: {integrity: sha512-p1diW6TqL9L07nNxvRMM7hMMw4c5XOo/1ibL4aAIGmSAt9slTE1Xgw5KWuof2uTOvCg9BY7ZRi+GaF+7sfgPeQ==}
     engines: {node: '>=14.17'}
@@ -3718,7 +3728,7 @@ snapshots:
 
   '@js-sdsl/ordered-map@4.4.2': {}
 
-  '@langchain/community@0.3.46(@browserbasehq/sdk@2.6.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.53.0)(deepmerge@4.3.1)(dotenv@16.5.0)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(zod@3.25.67))(@ibm-cloud/watsonx-ai@1.6.7)(@langchain/core@0.3.59(openai@4.104.0(ws@8.18.2)(zod@3.25.67)))(@pinecone-database/pinecone@6.1.1)(axios@1.10.0)(ibm-cloud-sdk-core@5.4.0)(ignore@5.3.2)(jsonwebtoken@9.0.2)(mammoth@1.9.1)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(playwright@1.53.0)(weaviate-client@3.6.2)(ws@8.18.2)':
+  '@langchain/community@0.3.46(@browserbasehq/sdk@2.6.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.53.0)(deepmerge@4.3.1)(dotenv@16.5.0)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(zod@3.25.67))(@ibm-cloud/watsonx-ai@1.6.7)(@langchain/core@0.3.59(openai@4.104.0(ws@8.18.2)(zod@3.25.67)))(@mendable/firecrawl-js@1.25.5)(@pinecone-database/pinecone@6.1.1)(axios@1.10.0)(ibm-cloud-sdk-core@5.4.0)(ignore@5.3.2)(jsonwebtoken@9.0.2)(mammoth@1.9.1)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(playwright@1.53.0)(weaviate-client@3.6.2)(ws@8.18.2)':
     dependencies:
       '@browserbasehq/stagehand': 1.14.0(@playwright/test@1.53.0)(deepmerge@4.3.1)(dotenv@16.5.0)(openai@4.104.0(ws@8.18.2)(zod@3.25.67))(zod@3.25.67)
       '@ibm-cloud/watsonx-ai': 1.6.7
@@ -3737,6 +3747,7 @@ snapshots:
       zod: 3.25.67
     optionalDependencies:
       '@browserbasehq/sdk': 2.6.0
+      '@mendable/firecrawl-js': 1.25.5
       '@pinecone-database/pinecone': 6.1.1
       ignore: 5.3.2
       jsonwebtoken: 9.0.2
@@ -3801,6 +3812,15 @@ snapshots:
       weaviate-client: 3.6.2
     transitivePeerDependencies:
       - encoding
+
+  '@mendable/firecrawl-js@1.25.5':
+    dependencies:
+      axios: 1.10.0(debug@4.4.1)
+      typescript-event-target: 1.1.1
+      zod: 3.25.67
+      zod-to-json-schema: 3.24.5(zod@3.25.67)
+    transitivePeerDependencies:
+      - debug
 
   '@napi-rs/wasm-runtime@0.2.11':
     dependencies:
@@ -5148,7 +5168,7 @@ snapshots:
       isstream: 0.1.2
       jsonwebtoken: 9.0.2
       mime-types: 2.1.35
-      retry-axios: 2.6.0(axios@1.10.0)
+      retry-axios: 2.6.0(axios@1.10.0(debug@4.4.1))
       tough-cookie: 4.1.4
     transitivePeerDependencies:
       - supports-color
@@ -6333,7 +6353,7 @@ snapshots:
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
-  retry-axios@2.6.0(axios@1.10.0):
+  retry-axios@2.6.0(axios@1.10.0(debug@4.4.1)):
     dependencies:
       axios: 1.10.0(debug@4.4.1)
 
@@ -6694,6 +6714,8 @@ snapshots:
       typescript: 5.8.3
     transitivePeerDependencies:
       - supports-color
+
+  typescript-event-target@1.1.1: {}
 
   typescript@5.8.3: {}
 

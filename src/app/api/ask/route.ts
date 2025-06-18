@@ -9,7 +9,7 @@ import { RAGService } from '@/lib/services/ragService';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { question, conversationId = 'default' } = body;
+    const { question, conversationId = 'default', webSearchEnabled = false } = body;
 
     if (!question || typeof question !== 'string') {
       return NextResponse.json(
@@ -33,17 +33,19 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Process the question with intelligent routing
-    const result = await ragService.askQuestion(question, conversationId);
+    // Process the question with intelligent routing and optional web search
+    const result = await ragService.askQuestion(question, conversationId, webSearchEnabled);
 
     return NextResponse.json({
       success: true,
       data: {
         answer: result.answer,
         sources: result.sources,
+        webSources: result.webSources,
         hasRelevantContent: result.hasRelevantContent,
         isCareerRelated: result.isCareerRelated,
         confidence: result.confidence,
+        usedWebSearch: result.usedWebSearch,
         conversationId: conversationId,
         timestamp: new Date().toISOString(),
       }

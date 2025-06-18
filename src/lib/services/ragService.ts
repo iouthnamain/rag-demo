@@ -1,6 +1,7 @@
 import { PineconeService } from './pinecone';
 import { GeminiService } from './gemini';
 import { FeedbackService } from './feedbackService';
+import { WebSearchService } from './webSearchService';
 import DocumentProcessorService from './documentProcessor';
 import path from 'path';
 
@@ -102,13 +103,16 @@ export class RAGService {
    */
   public async askQuestion(
     question: string,
-    conversationId: string = 'default'
+    conversationId: string = 'default',
+    webSearchEnabled: boolean = false
   ): Promise<{
     answer: string;
     sources: string[];
+    webSources?: string[];
     hasRelevantContent: boolean;
     isCareerRelated: boolean;
     confidence: number;
+    usedWebSearch?: boolean;
   }> {
     try {
       console.log(`📝 Processing question: ${question.substring(0, 50)}...`);
@@ -126,20 +130,32 @@ export class RAGService {
 
       let answer: string;
       let sources: string[] = [];
+      let webSources: string[] = [];
       let hasRelevantContent = false;
       let confidence = 0.5;
+      let usedWebSearch = false;
 
       if (isCareerRelated) {
         // Career-related question - use RAG with documents
-        const ragResult = await this.processCareerQuestion(question, conversationId);
+        const ragResult = await this.processCareerQuestion(question, conversationId, webSearchEnabled);
         answer = ragResult.answer;
         sources = ragResult.sources;
+        webSources = ragResult.webSources || [];
         hasRelevantContent = ragResult.hasRelevantContent;
         confidence = ragResult.confidence;
+        usedWebSearch = ragResult.usedWebSearch || false;
       } else {
         // General conversation - use general AI response
-        answer = await this.processGeneralQuestion(question, conversationId);
-        confidence = 0.8; // High confidence for general chat
+        if (webSearchEnabled) {
+          const webResult = await this.processGeneralQuestionWithWebSearch(question, conversationId);
+          answer = webResult.answer;
+          webSources = webResult.webSources || [];
+          usedWebSearch = true;
+          confidence = 0.8;
+        } else {
+          answer = await this.processGeneralQuestion(question, conversationId);
+          confidence = 0.8; // High confidence for general chat
+        }
       }
 
       // Add assistant response to conversation history
@@ -153,9 +169,11 @@ export class RAGService {
       return {
         answer,
         sources,
+        webSources: webSources.length > 0 ? webSources : undefined,
         hasRelevantContent,
         isCareerRelated,
         confidence,
+        usedWebSearch,
       };
     } catch (error) {
       console.error('❌ Error answering question:', error);
@@ -178,12 +196,15 @@ export class RAGService {
    */
   private async processCareerQuestion(
     question: string,
-    conversationId: string
+    conversationId: string,
+    webSearchEnabled: boolean = false
   ): Promise<{
     answer: string;
     sources: string[];
+    webSources?: string[];
     hasRelevantContent: boolean;
     confidence: number;
+    usedWebSearch?: boolean;
   }> {
     const geminiService = GeminiService.getInstance();
     const feedbackService = FeedbackService.getInstance();
@@ -197,6 +218,7 @@ export class RAGService {
         sources: ['learned_response'],
         hasRelevantContent: true,
         confidence: 0.9,
+        usedWebSearch: false,
       };
     }
 
@@ -217,18 +239,46 @@ export class RAGService {
     // Check if we have relevant results (score threshold)
     const relevantResults = searchResults.filter(result => result.score > 0.3);
     
+    let webSources: string[] = [];
+    let webContext = '';
+    let usedWebSearch = false;
+
+    // If web search is enabled, search for additional information
+    if (webSearchEnabled) {
+      try {
+        const webSearchService = WebSearchService.getInstance();
+        const webResults = await webSearchService.searchWeb(question, 3);
+        const webInfo = webSearchService.extractKeyInformation(webResults.results);
+        webContext = webInfo.combinedContent;
+        webSources = webInfo.sources;
+        usedWebSearch = true;
+        console.log(`🔍 Web search completed: ${webResults.results.length} results`);
+      } catch (error) {
+        console.error('⚠️ Web search failed:', error);
+        // Continue without web search if it fails
+      }
+    }
+
     if (relevantResults.length === 0) {
       console.log('ℹ️ No relevant documents found, using general career knowledge');
       
+      // Combine document knowledge with web search if available
+      let combinedContext = '';
+      if (webContext) {
+        combinedContext = `THÔNG TIN TỪ WEB:\n${webContext}\n\n`;
+      }
+      
       // Use general career knowledge with conversation context
-      const contextualPrompt = this.buildContextualCareerPrompt(question, conversationContext);
+      const contextualPrompt = this.buildContextualCareerPrompt(question, conversationContext, combinedContext);
       const answer = await geminiService.generateAnswer(question, '', contextualPrompt);
       
       return {
         answer,
         sources: ['general_knowledge'],
+        webSources: webSources.length > 0 ? webSources : undefined,
         hasRelevantContent: false,
-        confidence: 0.6,
+        confidence: webSources.length > 0 ? 0.75 : 0.6,
+        usedWebSearch,
       };
     }
     
@@ -243,21 +293,34 @@ export class RAGService {
     
     console.log(`📚 Using context from sources: ${sources.join(', ')}`);
     
+    // Combine document context with web search context if available
+    let combinedContext = contextText;
+    if (webContext) {
+      combinedContext = `${contextText}\n\nTHÔNG TIN BỔ SUNG TỪ WEB:\n${webContext}`;
+    }
+    
     // Build contextual prompt with conversation history
-    const contextualPrompt = this.buildContextualCareerPrompt(question, conversationContext, contextText);
+    const contextualPrompt = this.buildContextualCareerPrompt(question, conversationContext, combinedContext);
     
     // Generate answer using the context
-    const answer = await geminiService.generateAnswer(question, contextText, contextualPrompt);
+    const answer = await geminiService.generateAnswer(question, combinedContext, contextualPrompt);
     
     // Calculate confidence based on search scores
     const avgScore = relevantResults.reduce((sum, result) => sum + result.score, 0) / relevantResults.length;
-    const confidence = Math.min(0.95, avgScore + 0.2);
+    let confidence = Math.min(0.95, avgScore + 0.2);
+    
+    // Boost confidence if web search provided additional context
+    if (webSources.length > 0) {
+      confidence = Math.min(0.98, confidence + 0.1);
+    }
     
     return {
       answer,
       sources,
+      webSources: webSources.length > 0 ? webSources : undefined,
       hasRelevantContent: true,
       confidence,
+      usedWebSearch,
     };
   }
 
@@ -293,6 +356,71 @@ export class RAGService {
     }
     
     return await geminiService.generateGeneralResponse(contextualQuestion);
+  }
+
+  /**
+   * Process general questions with web search
+   */
+  private async processGeneralQuestionWithWebSearch(
+    question: string,
+    conversationId: string
+  ): Promise<{
+    answer: string;
+    webSources?: string[];
+  }> {
+    const geminiService = GeminiService.getInstance();
+    const feedbackService = FeedbackService.getInstance();
+    const webSearchService = WebSearchService.getInstance();
+    
+    // Get conversation context
+    const conversationContext = feedbackService.getConversationContext(conversationId, 3);
+    
+    try {
+      // Perform web search
+      const webResults = await webSearchService.searchWeb(question, 3);
+      const webInfo = webSearchService.extractKeyInformation(webResults.results);
+      
+      console.log(`🔍 Web search for general question completed: ${webResults.results.length} results`);
+      
+      // Build prompt with web context
+      let contextualQuestion = question;
+      if (conversationContext.length > 0) {
+        const recentContext = conversationContext
+          .slice(-2)
+          .map(msg => `${msg.role}: ${msg.content}`)
+          .join('\n');
+        
+        contextualQuestion = `Ngữ cảnh cuộc trò chuyện:\n${recentContext}\n\nThông tin từ web:\n${webInfo.combinedContent}\n\nCâu hỏi hiện tại: ${question}`;
+      } else {
+        contextualQuestion = `Thông tin từ web:\n${webInfo.combinedContent}\n\nCâu hỏi: ${question}`;
+      }
+      
+      const answer = await geminiService.generateGeneralResponse(contextualQuestion);
+      
+      return {
+        answer,
+        webSources: webInfo.sources,
+      };
+    } catch (error) {
+      console.error('⚠️ Web search failed for general question:', error);
+      
+      // Fallback to regular general response
+      let contextualQuestion = question;
+      if (conversationContext.length > 0) {
+        const recentContext = conversationContext
+          .slice(-2)
+          .map(msg => `${msg.role}: ${msg.content}`)
+          .join('\n');
+        
+        contextualQuestion = `Ngữ cảnh cuộc trò chuyện:\n${recentContext}\n\nCâu hỏi hiện tại: ${question}`;
+      }
+      
+      const answer = await geminiService.generateGeneralResponse(contextualQuestion);
+      
+      return {
+        answer,
+      };
+    }
   }
 
   /**
