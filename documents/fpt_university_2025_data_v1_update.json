@@ -1,0 +1,1204 @@
+{
+  "campuses": [
+    {
+      "CampusID": 1,
+      "Name": "Đại học FPT Hà Nội",
+      "Address": "Khu Giáo dục và Đào tạo – Khu Công nghệ cao Hòa Lạc – Km29 Đại lộ Thăng Long, H. Thạch Thất, TP. Hà Nội",
+      "ContactInfo": "Điện thoại: (024) 7300 5588, Email: tuyensinhhanoi@fpt.edu.vn, Fanpage: https://www.facebook.com/DaihocFPTHaNoi",
+      "DescriptionHighlights": "Campus với kiến trúc độc đáo hình rồng, đạt nhiều giải thưởng danh giá như giải nhất 'Kiến trúc Xanh Việt Nam', được ví như một khu đô thị toàn năng thu nhỏ."
+    },
+    {
+      "CampusID": 2,
+      "Name": "Đại học FPT TP.HCM",
+      "Address": "Lô E2a-7, Đường D1 Khu Công nghệ cao, P. Long Thạnh Mỹ, TP. Thủ Đức, TP. Hồ Chí Minh",
+      "ContactInfo": "Điện thoại: (028) 7300 5588, Email: tuyensinhhcm@fpt.edu.vn, Fanpage: https://www.facebook.com/FPTU.HCM",
+      "DescriptionHighlights": "Campus với tạo hình những đỉnh núi kỳ công rực rỡ xanh mướt, được ví như 'một kiến trúc đại học xanh độc đáo', tọa lạc tại Khu công nghệ cao."
+    },
+    {
+      "CampusID": 3,
+      "Name": "Đại học FPT Đà Nẵng",
+      "Address": "Khu đô thị công nghệ FPT Đà Nẵng, P. Hoà Hải, Q. Ngũ Hành Sơn, TP. Đà Nẵng",
+      "ContactInfo": "Điện thoại: (0236) 730 0999, Email: tuyensinhdanang@fpt.edu.vn, Fanpage: https://www.facebook.com/@daihocfptdanang",
+      "DescriptionHighlights": "Campus với triết lý thiên nhiên và đô thị giao thoa, đạt giải thưởng 'Designed Award Winning Architecture Projects' từ World Architecture, tọa lạc tại thành phố đáng sống nhất Việt Nam."
+    },
+    {
+      "CampusID": 4,
+      "Name": "Đại học FPT Cần Thơ",
+      "Address": "Số 600 Đường Nguyễn Văn Cừ (nối dài), P. An Bình, Q. Ninh Kiều, TP. Cần Thơ",
+      "ContactInfo": "Điện thoại: (0292) 730 3636, Email: tuyensinhcantho@fpt.edu.vn, Fanpage: facebook.com/daihocfptcantho",
+      "DescriptionHighlights": "Campus với lối kiến trúc châu Âu đương đại, được mệnh danh là 'ngôi trường mọc lên ở trời Tây', tọa lạc tại thủ đô Mekong Delta."
+    },
+    {
+      "CampusID": 5,
+      "Name": "Đại học FPT Quy Nhơn",
+      "Address": "Khu đô thị mới An Phú Thịnh, Phường Nhơn Bình & Phường Đống Đa, TP. Quy Nhơn, Bình Định",
+      "ContactInfo": "Điện thoại: (0256) 7300 999, Email: tuyensinhquynhon@fpt.edu.vn, Fanpage: https://www.facebook.com/daihocfptquynhon",
+      "DescriptionHighlights": "Campus AI được thiết kế bởi Huni Architectes (Pháp), lấy cảm hứng từ các khối bo mạch điện tử, được kỳ vọng trở thành 'thung lũng Silicon' của Việt Nam."
+    }
+  ],
+  "majors": [
+    {
+      "MajorID": 1,
+      "Name": "Kỹ thuật phần mềm",
+      "Code": "7480201",
+      "Description": "Chuyên ngành đào tạo theo xu hướng nghề nghiệp và nhu cầu tuyển dụng mới nhất. Sinh viên được trang bị đầy đủ kiến thức và kỹ năng để đáp ứng các vị trí như Back-End, Front-End, Full-Stack Developer. Tố chất cần có: Nền tảng toán học và tư duy logic, khả năng hợp tác và giải quyết vấn đề, khả năng học tập chủ động và yêu thích công nghệ.",
+      "CareerOpportunities": "Back-End Developer, Front-End Developer, Full-Stack Developer, Mobile Developer, Game Developer, Business Analyst (BA), Software Tester, SAP Consultant, SAP Developer, Bridge Software Engineer (Japanese/Korean).",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 2,
+      "Name": "Hệ thống thông tin",
+      "Code": "7480201",
+      "Description": "Chương trình giảng dạy đảm bảo sinh viên nắm vững kiến thức từ Cấu trúc dữ liệu, Phân tích dữ liệu, đến Thiết kế hệ thống thông tin và phát triển ứng dụng SAP. Tố chất cần có: Đam mê công nghệ, tư duy logic, khả năng phân tích, làm việc nhóm tốt, chủ động và sáng tạo.",
+      "CareerOpportunities": "Chuyên viên phân tích, tư vấn, thiết kế hệ thống thông tin; Chuyên viên phát triển ứng dụng; Chuyên viên triển khai, vận hành các hệ thống ERP, CRM; Quản trị hệ thống thông tin và tri thức; Quản trị viên các hệ cơ sở dữ liệu.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 3,
+      "Name": "Trí tuệ nhân tạo",
+      "Code": "7480201",
+      "Description": "Ngành học tập trung vào việc phát triển các hệ thống thông minh có khả năng học hỏi, suy luận và hành động như con người. Sinh viên được học về các lĩnh vực như học máy, xử lý ngôn ngữ tự nhiên, thị giác máy tính.",
+      "CareerOpportunities": "Kỹ sư AI, Nhà khoa học dữ liệu, Kỹ sư học máy, Chuyên gia xử lý ngôn ngữ tự nhiên, Kỹ sư thị giác máy tính.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 4,
+      "Name": "An toàn thông tin",
+      "Code": "7480201",
+      "Description": "Chương trình đào tạo được thiết kế để đáp ứng nhu cầu cao của thị trường, khẳng định vị thế dẫn đầu trong lĩnh vực Cyber Security. Tố chất cần có: Tư duy logic và giải quyết vấn đề, đam mê công nghệ, yêu thích phân tích, điều tra và có tinh thần chính nghĩa.",
+      "CareerOpportunities": "Chuyên viên phân tích bảo mật, Chuyên gia bảo mật mạng, Quản lý rủi ro an ninh mạng, Chuyên viên kiểm thử xâm nhập, Chuyên gia ứng phó sự cố, Chuyên gia bảo mật đám mây, Chuyên viên kiểm toán bảo mật.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 5,
+      "Name": "Công nghệ ô tô số",
+      "Code": "7480201",
+      "Description": "Ngành học bùng nổ toàn cầu, đặc biệt trong bối cảnh xe tự lái và phương tiện thông minh. Chương trình đào tạo đặc sắc về kỹ thuật điện tử, phần mềm nhúng, AI, Autosar, IVI và self-driving. Tố chất cần có: Thông thạo ngôn ngữ lập trình, đam mê công nghệ, tỉ mỉ, kiên nhẫn, sáng tạo và chịu áp lực tốt.",
+      "CareerOpportunities": "Kiến trúc sư phần mềm xe, Chuyên gia Embedded C/C++, Chuyên gia tư vấn công nghệ ô tô số, Kỹ sư kiểm tra tự động hóa, Kỹ sư Autosar nhúng.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 6,
+      "Name": "Thiết kế vi mạch bán dẫn",
+      "Code": "7480201",
+      "Description": "Ngành học đang trên đà phát triển mạnh mẽ toàn cầu. Chương trình đào tạo tại FPT tích hợp liên ngành với Kỹ thuật phần mềm, AI và Công nghệ ô tô, kế thừa thế mạnh từ FPT Semiconductor. Tố chất cần có: Kỹ năng chuyên môn về ngôn ngữ lập trình, đam mê công nghệ, tỉ mỉ, kiên nhẫn và sáng tạo.",
+      "CareerOpportunities": "Kỹ sư Thiết kế RTL, Kỹ sư Kiểm tra Thiết kế (Design Verification), Kỹ sư Thiết kế vật lý (Physical Design), Kỹ sư Thiết kế chức năng kiểm tra (DFT), Kỹ sư Thiết kế Layout IC.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 7,
+      "Name": "Thiết kế mỹ thuật số",
+      "Code": "7480201",
+      "Description": "Chuyên ngành tập trung vào việc ứng dụng công nghệ trong sáng tạo nghệ thuật, bao gồm thiết kế đồ họa, UI/UX, đồ họa 2D/3D, và thiết kế game. Chương trình tích hợp các công nghệ tiên tiến như AR, VR, Hologram và Metaverse. Tố chất cần có: Tư duy thẩm mỹ, sáng tạo, kỹ năng giải quyết vấn đề, giao tiếp tốt và hiểu biết công nghệ.",
+      "CareerOpportunities": "Graphic Designer, UI/UX Designer, 2D/3D Artist, Game Designer, Motion Graphics Designer, Creative Director, Art Director.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 140,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 8,
+      "Name": "Digital Marketing",
+      "Code": "7340101",
+      "Description": "Là một trong những lĩnh vực phát triển nhanh nhất toàn cầu. Chương trình đào tạo tại FPT theo chuẩn quốc tế AACSB và ACBSP, đảm bảo kiến thức nền tảng và cập nhật công nghệ mới nhất. Tố chất cần có: Nhạy bén với xu hướng, tư duy logic và sáng tạo, kỹ năng giao tiếp, am hiểu công nghệ và tinh thần học hỏi không ngừng.",
+      "CareerOpportunities": "SEO Specialist, Content Marketing Specialist, Social Media Specialist, Digital Marketing Manager, AI-driven Marketing Strategist, E-commerce Specialist, PPC Specialist.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 9,
+      "Name": "Kinh doanh quốc tế",
+      "Code": "7340101",
+      "Description": "Chương trình chuẩn quốc tế AACSB và ACBSP, đào tạo 100% bằng tiếng Anh và học thêm tiếng Trung. Chú trọng trải nghiệm thực chiến với kỳ OJT 4-8 tháng. Tố chất cần có: Tư duy logic và hệ thống, khả năng thích ứng văn hóa, kỹ năng giao tiếp và đàm phán, tự tin và quyết đoán.",
+      "CareerOpportunities": "International Business Analyst, Export-Import Specialist, Supply Chain Manager, International Marketing Manager, Project Manager, Investment Advisor, Founder/Entrepreneur.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 10,
+      "Name": "Tài chính doanh nghiệp (New)",
+      "Code": "7340101",
+      "Description": "Chương trình đào tạo cử nhân Quản trị kinh doanh, được Hội đồng Kiểm định ACBSP kiểm định. Chương trình thực tiễn, cập nhật xu hướng quốc tế, ứng dụng công nghệ cao trong đào tạo. Tố chất cần có: Tư duy logic và phân tích, kiến thức tài chính, kỹ năng công nghệ, kỹ năng giao tiếp và tinh thần đổi mới.",
+      "CareerOpportunities": "Chuyên viên phân tích, tư vấn đầu tư; Chuyên viên tín dụng; Chuyên viên môi giới chứng khoán; Chuyên viên phân tích tài chính doanh nghiệp; Chuyên viên quản trị rủi ro.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 11,
+      "Name": "Ngân hàng số - Tài chính (New)",
+      "Code": "7340101",
+      "Description": "Chương trình đào tạo liên ngành hiện đại, kết hợp ngân hàng – tài chính truyền thống với Blockchain, Fintech, An ninh tài chính, đáp ứng xu hướng toàn cầu. Được kiểm định bởi ACBSP. Tố chất cần có: Tư duy sáng tạo và đổi mới, kỹ năng phân tích dữ liệu, khả năng quản lý rủi ro, kỹ năng giao tiếp và tinh thần cầu tiến.",
+      "CareerOpportunities": "Digital Banking Specialist, Digital Financial Analyst, Fintech Product Developer, Personal and Corporate Financial Advisor, Digital Financial Security Specialist.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 12,
+      "Name": "Công nghệ tài chính (New)",
+      "Code": "7340101",
+      "Description": "Chương trình tiên tiến, cập nhật liên tục, tích hợp công nghệ mới như AI, machine learning và blockchain. Nhấn mạnh trải nghiệm thực tế qua OJT và workshop. Tố chất cần có: Hiểu biết công nghệ (AI, blockchain), kỹ năng tài chính, tư duy sáng tạo, kỹ năng giao tiếp và linh hoạt.",
+      "CareerOpportunities": "Software Engineer, Data Scientist, IT & Operations Manager, UX/UI Designer, Risk and Compliance Specialist, Product Manager.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 13,
+      "Name": "Tài chính đầu tư (New)",
+      "Code": "7340101",
+      "Description": "Chương trình được kiểm định bởi ACBSP, đào tạo thực tiễn, cập nhật xu hướng quốc tế. Sinh viên được thực tập tại các tổ chức tài chính hàng đầu như FPT Capital, FPTS. Tố chất cần có: Tư duy logic và phân tích, kiến thức tài chính, kỹ năng công nghệ, kỹ năng giao tiếp và tinh thần đổi mới.",
+      "CareerOpportunities": "Chuyên viên phân tích đầu tư, Chuyên viên định giá tài sản, Chuyên viên tư vấn đầu tư tài chính, Chuyên gia hoạch định chiến lược đầu tư, Chuyên viên phân tích tài chính doanh nghiệp.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 14,
+      "Name": "Logistics & quản lý chuỗi cung ứng toàn cầu",
+      "Code": "7340101",
+      "Description": "Chương trình đào tạo cập nhật kiến thức công nghệ tiên tiến như AI, blockchain, machine learning. Sinh viên học bằng tiếng Anh và tiếng Trung. Có kỳ thực tập OJT tại các doanh nghiệp lớn. Tố chất cần có: Khả năng học hỏi liên tục, tư duy phân tích, kỹ năng giao tiếp, quản lý thời gian và linh hoạt.",
+      "CareerOpportunities": "Logistics Specialist, Procurement Specialist, Documentation Specialist, Warehouse Manager, Logistics Manager, Supply Chain Director.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 15,
+      "Name": "Truyền thông đa phương tiện",
+      "Code": "7320106",
+      "Description": "Với lợi thế về công nghệ, trường FPT giúp sinh viên tiếp cận và ứng dụng những công nghệ tiên tiến nhất trong ngành như AR/VR, AI. Chương trình đào tạo theo phương pháp Project Based Learning và có kỳ OJT. Tố chất cần có: Sáng tạo và tư duy phản biện, am hiểu công nghệ, kỹ năng quản lý dự án, khả năng kể chuyện.",
+      "CareerOpportunities": "Content Creator, Video Editor, Producer, SEO/SEM Specialist, Social Media Specialist, Event Executive, Corporate Communication Specialist.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 16,
+      "Name": "Quan hệ công chúng",
+      "Code": "7320106",
+      "Description": "Chương trình học cập nhật những xu hướng PR mới nhất như Digital PR, Data-driven PR. Sinh viên được lựa chọn các định hướng chuyên sâu và học theo phương pháp Project-Based Learning. Tố chất cần có: Kỹ năng giao tiếp, xử lý khủng hoảng, tư duy sáng tạo và khả năng quản lý dự án.",
+      "CareerOpportunities": "Public Relations Specialist, Event Planner, Crisis Management Specialist, Internal Communication Specialist, Copywriter/Content Creator, PR Educator/Researcher.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 17,
+      "Name": "Luật kinh tế (New)",
+      "Code": "7380107",
+      "Description": "Chương trình đào tạo thực tiễn, ứng dụng công nghệ AI, kết hợp phương pháp Project-based learning. 100% sinh viên được học tập tại doanh nghiệp ở học kỳ 6 (OJT). Tố chất cần có: Tư duy phân tích và logic, kỹ năng giao tiếp và thuyết phục, hiểu biết về kinh tế và kinh doanh.",
+      "CareerOpportunities": "Luật sư/Chuyên viên Pháp chế Doanh nghiệp, Luật sư/Chuyên viên Tư vấn, Chuyên viên tại Cơ quan Nhà nước, Chuyên viên Pháp lý Ngân hàng, Bất động sản, Sở hữu trí tuệ.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 18,
+      "Name": "Luật thương mại quốc tế (New)",
+      "Code": "7380107",
+      "Description": "Chương trình đào tạo thực tiễn, ứng dụng công nghệ, kết hợp lý thuyết và thực tiễn với phương pháp Project-based learning. Sinh viên được học tập tại doanh nghiệp ở học kỳ 6. Tố chất cần có: Tư duy phân tích và logic, kỹ năng giao tiếp và thuyết phục, kỹ năng ngoại ngữ.",
+      "CareerOpportunities": "Luật sư/Chuyên viên pháp chế Tập đoàn đa quốc gia, NGO; Luật sư/Chuyên viên tư vấn tại công ty luật quốc tế; Chuyên viên tại Bộ Ngoại giao; Trọng tài thương mại.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 19,
+      "Name": "Ngôn ngữ Anh",
+      "Code": "7220201",
+      "Description": "Chương trình đào tạo theo hướng tích hợp (Anh-Kinh doanh, Anh-Truyền thông, Anh-Sư phạm), ứng dụng công nghệ AI, và tập trung phát triển kỹ năng thế kỷ 21. Có chương trình OJT cho 100% sinh viên. Tố chất cần có: Đam mê ngôn ngữ, thái độ lắng nghe, tư duy linh hoạt và sáng tạo.",
+      "CareerOpportunities": "Giáo dục đào tạo, Biên phiên dịch, Sáng tạo nội dung (Truyền thông, Marketing), Kinh doanh quốc tế, Quan hệ đối ngoại, Nhân sự, Dịch vụ khách hàng.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 20,
+      "Name": "Song ngữ Trung – Anh",
+      "Code": "7220204",
+      "Description": "Đào tạo song ngữ, giúp sinh viên tự tin giao tiếp trong môi trường đa văn hóa, tích hợp kiến thức văn hóa, kinh tế, xã hội. Chương trình thực tiễn, có kỳ OJT.",
+      "CareerOpportunities": "Biên phiên dịch, Điều phối viên dự án, Chuyên viên kinh doanh quốc tế, Giáo viên, Hướng dẫn viên du lịch.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 21,
+      "Name": "Song ngữ Nhật – Anh",
+      "Code": "7220209",
+      "Description": "Chương trình đào tạo đột phá, tích hợp toàn diện giữa chuyên ngành và kỹ năng thực tiễn. Sinh viên được tham gia OJT trong và ngoài nước, có thể lựa chọn các định hướng nghề nghiệp linh hoạt. Tố chất cần có: Yêu thích văn hóa Nhật Bản, thái độ tích cực, ham học hỏi, tỉ mỉ và cẩn thận.",
+      "CareerOpportunities": "Giáo dục và đào tạo, Biên dịch và phiên dịch, Hành chính và quản trị, Công nghệ thông tin (Biên phiên dịch IT, IT Comtor).",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 22,
+      "Name": "Song ngữ Hàn – Anh",
+      "Code": "7220210",
+      "Description": "Đào tạo song ngữ, giúp sinh viên tự tin giao tiếp trong môi trường đa văn hóa, tích hợp kiến thức văn hóa, kinh tế, xã hội. Chương trình thực tiễn, có kỳ OJT.",
+      "CareerOpportunities": "Biên phiên dịch, Điều phối viên dự án, Chuyên viên kinh doanh quốc tế, Giáo viên, Hướng dẫn viên du lịch.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 23,
+      "Name": "Quản trị khách sạn",
+      "Code": "7340101",
+      "Description": "Chương trình đào tạo chuẩn quốc tế, với cơ sở vật chất hiện đại và trải nghiệm làm việc thực tế qua OJT tại các tập đoàn khách sạn quốc tế như Marriott, IHG, Accor. Tố chất cần có: Tư duy chiến lược, kỹ năng giao tiếp và ngoại ngữ, kỹ năng lãnh đạo, tinh thần dịch vụ xuất sắc.",
+      "CareerOpportunities": "Hotel Manager, Front Office Manager, Housekeeping Manager, Sales and Marketing Manager, Restaurant Manager, Event Director, Event Coordinator.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    },
+    {
+      "MajorID": 24,
+      "Name": "Quản trị dịch vụ du lịch và lữ hành",
+      "Code": "7340101",
+      "Description": "Chuyên ngành mang lại đa dạng cơ hội nghề nghiệp, đặc biệt trong lữ hành, hướng dẫn viên, marketing và công nghệ du lịch. Chương trình đào tạo kết hợp lý thuyết và thực hành, chuyên sâu vào nghiệp vụ. Tố chất cần có: Kỹ năng xử lý vấn đề, tư duy chiến lược, kỹ năng giao tiếp, đam mê văn hóa và khám phá.",
+      "CareerOpportunities": "Senior Tour Guide, Travel Manager, Tour Coordinator, Travel Agency CEO, Tour Designer, Tourism Marketing Specialist, Tourism Information System Manager.",
+      "GeneralAdmissionRequirements": "Xét tuyển theo Top50 SchoolRank hoặc các phương thức khác theo quy chế tuyển sinh của Đại học FPT năm 2025.",
+      "TotalCredits": 139,
+      "ProgramDuration": "9 học kỳ",
+      "DeliveryMode": "Onsite"
+    }
+  ],
+  "admissionYears": [
+    {
+      "AdmissionYearID": 1,
+      "Year": 2025,
+      "StartDate": "2025-01-01",
+      "EndDate": "2025-12-31",
+      "TotalQuota": 13127,
+      "IsActive": true,
+      "ApplicationOpenDate": "2024-11-01",
+      "ApplicationCloseDate": "2025-08-31",
+      "ResultReleaseDate": "2025-09-15",
+      "EnrollmentDeadline": "2025-09-30"
+    }
+  ],
+  "intakeBatches": [
+    {
+      "BatchID": 1,
+      "AdmissionYearID": 1,
+      "Name": "Khoá 21 (nhập học năm 2025) - HN & HCM",
+      "IsFixedTuition": true,
+      "OrientationFee": 13100000,
+      "ApplicationOpenDate": "2024-11-01",
+      "ApplicationCloseDate": "2025-08-31",
+      "OrientationDate": "2025-09-01",
+      "SemesterStartDate": "2025-09-15",
+      "SemesterEndDate": "2026-01-15"
+    },
+    {
+      "BatchID": 2,
+      "AdmissionYearID": 1,
+      "Name": "Khoá 21 (nhập học năm 2025) - ĐN & CT",
+      "IsFixedTuition": true,
+      "OrientationFee": 9170000,
+      "ApplicationOpenDate": "2024-11-01",
+      "ApplicationCloseDate": "2025-08-31",
+      "OrientationDate": "2025-09-01",
+      "SemesterStartDate": "2025-09-15",
+      "SemesterEndDate": "2026-01-15"
+    },
+    {
+      "BatchID": 3,
+      "AdmissionYearID": 1,
+      "Name": "Khoá 21 (nhập học năm 2025) - QN",
+      "IsFixedTuition": true,
+      "OrientationFee": 6550000,
+      "ApplicationOpenDate": "2024-11-01",
+      "ApplicationCloseDate": "2025-08-31",
+      "OrientationDate": "2025-09-01",
+      "SemesterStartDate": "2025-09-15",
+      "SemesterEndDate": "2026-01-15"
+    }
+  ],
+  "tuitionFees": [
+    {
+      "FeeID": 1,
+      "MajorID": 1,
+      "BatchID": 1,
+      "CampusID": 1,
+      "SemesterRange": "1-3",
+      "BaseAmount": 31600000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Công nghệ thông tin, Quản trị kinh doanh, Công nghệ truyền thông tại Hà Nội."
+    },
+    {
+      "FeeID": 2,
+      "MajorID": 1,
+      "BatchID": 1,
+      "CampusID": 1,
+      "SemesterRange": "4-6",
+      "BaseAmount": 33600000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Công nghệ thông tin, Quản trị kinh doanh, Công nghệ truyền thông tại Hà Nội."
+    },
+    {
+      "FeeID": 3,
+      "MajorID": 1,
+      "BatchID": 1,
+      "CampusID": 1,
+      "SemesterRange": "7-9",
+      "BaseAmount": 35800000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Công nghệ thông tin, Quản trị kinh doanh, Công nghệ truyền thông tại Hà Nội."
+    },
+    {
+      "FeeID": 4,
+      "MajorID": 17,
+      "BatchID": 1,
+      "CampusID": 1,
+      "SemesterRange": "1-3",
+      "BaseAmount": 22120000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Luật, Ngôn ngữ tại Hà Nội."
+    },
+    {
+      "FeeID": 5,
+      "MajorID": 17,
+      "BatchID": 1,
+      "CampusID": 1,
+      "SemesterRange": "4-6",
+      "BaseAmount": 23520000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Luật, Ngôn ngữ tại Hà Nội."
+    },
+    {
+      "FeeID": 6,
+      "MajorID": 17,
+      "BatchID": 1,
+      "CampusID": 1,
+      "SemesterRange": "7-9",
+      "BaseAmount": 25060000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Luật, Ngôn ngữ tại Hà Nội."
+    },
+    {
+      "FeeID": 7,
+      "MajorID": 1,
+      "BatchID": 1,
+      "CampusID": 2,
+      "SemesterRange": "1-3",
+      "BaseAmount": 31600000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Công nghệ thông tin, Quản trị kinh doanh, Công nghệ truyền thông tại TP.HCM."
+    },
+    {
+      "FeeID": 8,
+      "MajorID": 1,
+      "BatchID": 1,
+      "CampusID": 2,
+      "SemesterRange": "4-6",
+      "BaseAmount": 33600000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Công nghệ thông tin, Quản trị kinh doanh, Công nghệ truyền thông tại TP.HCM."
+    },
+    {
+      "FeeID": 9,
+      "MajorID": 1,
+      "BatchID": 1,
+      "CampusID": 2,
+      "SemesterRange": "7-9",
+      "BaseAmount": 35800000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Công nghệ thông tin, Quản trị kinh doanh, Công nghệ truyền thông tại TP.HCM."
+    },
+    {
+      "FeeID": 10,
+      "MajorID": 17,
+      "BatchID": 1,
+      "CampusID": 2,
+      "SemesterRange": "1-3",
+      "BaseAmount": 22120000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Luật, Ngôn ngữ tại TP.HCM."
+    },
+    {
+      "FeeID": 11,
+      "MajorID": 17,
+      "BatchID": 1,
+      "CampusID": 2,
+      "SemesterRange": "4-6",
+      "BaseAmount": 23520000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Luật, Ngôn ngữ tại TP.HCM."
+    },
+    {
+      "FeeID": 12,
+      "MajorID": 17,
+      "BatchID": 1,
+      "CampusID": 2,
+      "SemesterRange": "7-9",
+      "BaseAmount": 25060000,
+      "Currency": "VND",
+      "Notes": "Áp dụng cho các ngành thuộc nhóm Luật, Ngôn ngữ tại TP.HCM."
+    },
+    {
+      "FeeID": 13,
+      "MajorID": 1,
+      "BatchID": 2,
+      "CampusID": 3,
+      "SemesterRange": "1-3",
+      "BaseAmount": 22120000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Đà Nẵng."
+    },
+    {
+      "FeeID": 14,
+      "MajorID": 1,
+      "BatchID": 2,
+      "CampusID": 3,
+      "SemesterRange": "4-6",
+      "BaseAmount": 23520000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Đà Nẵng."
+    },
+    {
+      "FeeID": 15,
+      "MajorID": 1,
+      "BatchID": 2,
+      "CampusID": 3,
+      "SemesterRange": "7-9",
+      "BaseAmount": 25060000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Đà Nẵng."
+    },
+    {
+      "FeeID": 16,
+      "MajorID": 17,
+      "BatchID": 2,
+      "CampusID": 3,
+      "SemesterRange": "1-3",
+      "BaseAmount": 15480000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành Luật, Ngôn ngữ, Quản trị khách sạn, Du lịch tại Đà Nẵng."
+    },
+    {
+      "FeeID": 17,
+      "MajorID": 17,
+      "BatchID": 2,
+      "CampusID": 3,
+      "SemesterRange": "4-6",
+      "BaseAmount": 16460000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành Luật, Ngôn ngữ, Quản trị khách sạn, Du lịch tại Đà Nẵng."
+    },
+    {
+      "FeeID": 18,
+      "MajorID": 17,
+      "BatchID": 2,
+      "CampusID": 3,
+      "SemesterRange": "7-9",
+      "BaseAmount": 17540000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành Luật, Ngôn ngữ, Quản trị khách sạn, Du lịch tại Đà Nẵng."
+    },
+    {
+      "FeeID": 19,
+      "MajorID": 1,
+      "BatchID": 2,
+      "CampusID": 4,
+      "SemesterRange": "1-3",
+      "BaseAmount": 22120000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Cần Thơ."
+    },
+    {
+      "FeeID": 20,
+      "MajorID": 1,
+      "BatchID": 2,
+      "CampusID": 4,
+      "SemesterRange": "4-6",
+      "BaseAmount": 23520000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Cần Thơ."
+    },
+    {
+      "FeeID": 21,
+      "MajorID": 1,
+      "BatchID": 2,
+      "CampusID": 4,
+      "SemesterRange": "7-9",
+      "BaseAmount": 25060000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Cần Thơ."
+    },
+    {
+      "FeeID": 22,
+      "MajorID": 17,
+      "BatchID": 2,
+      "CampusID": 4,
+      "SemesterRange": "1-3",
+      "BaseAmount": 15480000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành Luật, Ngôn ngữ, Quản trị khách sạn, Du lịch tại Cần Thơ."
+    },
+    {
+      "FeeID": 23,
+      "MajorID": 17,
+      "BatchID": 2,
+      "CampusID": 4,
+      "SemesterRange": "4-6",
+      "BaseAmount": 16460000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành Luật, Ngôn ngữ, Quản trị khách sạn, Du lịch tại Cần Thơ."
+    },
+    {
+      "FeeID": 24,
+      "MajorID": 17,
+      "BatchID": 2,
+      "CampusID": 4,
+      "SemesterRange": "7-9",
+      "BaseAmount": 17540000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 30%. Áp dụng cho các ngành Luật, Ngôn ngữ, Quản trị khách sạn, Du lịch tại Cần Thơ."
+    },
+    {
+      "FeeID": 25,
+      "MajorID": 1,
+      "BatchID": 3,
+      "CampusID": 5,
+      "SemesterRange": "1-3",
+      "BaseAmount": 15800000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 50%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Quy Nhơn."
+    },
+    {
+      "FeeID": 26,
+      "MajorID": 1,
+      "BatchID": 3,
+      "CampusID": 5,
+      "SemesterRange": "4-6",
+      "BaseAmount": 16800000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 50%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Quy Nhơn."
+    },
+    {
+      "FeeID": 27,
+      "MajorID": 1,
+      "BatchID": 3,
+      "CampusID": 5,
+      "SemesterRange": "7-9",
+      "BaseAmount": 17900000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 50%. Áp dụng cho các ngành CNTT, QTKD, CNTT tại Quy Nhơn."
+    },
+    {
+      "FeeID": 28,
+      "MajorID": 17,
+      "BatchID": 3,
+      "CampusID": 5,
+      "SemesterRange": "1-3",
+      "BaseAmount": 11060000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 50%. Áp dụng cho các ngành Luật, Ngôn ngữ tại Quy Nhơn."
+    },
+    {
+      "FeeID": 29,
+      "MajorID": 17,
+      "BatchID": 3,
+      "CampusID": 5,
+      "SemesterRange": "4-6",
+      "BaseAmount": 11760000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 50%. Áp dụng cho các ngành Luật, Ngôn ngữ tại Quy Nhơn."
+    },
+    {
+      "FeeID": 30,
+      "MajorID": 17,
+      "BatchID": 3,
+      "CampusID": 5,
+      "SemesterRange": "7-9",
+      "BaseAmount": 12530000,
+      "Currency": "VND",
+      "Notes": "Học phí đã áp dụng ưu đãi 50%. Áp dụng cho các ngành Luật, Ngôn ngữ tại Quy Nhơn."
+    }
+  ],
+  "campusDiscounts": [
+    {
+      "DiscountID": 1,
+      "CampusID": 3,
+      "BatchID": 2,
+      "DiscountName": "Ưu đãi 30% học phí toàn khoá học",
+      "DiscountType": "percentage",
+      "DiscountValue": 30,
+      "Description": "Ưu đãi 30% học phí toàn khoá học dành cho sinh viên học tại campus Đà Nẵng nhằm thúc đẩy nguồn nhân lực chất lượng cao cho Vùng kinh tế trọng điểm miền Trung."
+    },
+    {
+      "DiscountID": 2,
+      "CampusID": 4,
+      "BatchID": 2,
+      "DiscountName": "Ưu đãi 30% học phí toàn khoá học",
+      "DiscountType": "percentage",
+      "DiscountValue": 30,
+      "Description": "Ưu đãi 30% học phí toàn khoá học dành cho sinh viên học tại campus Cần Thơ nhằm thúc đẩy nguồn nhân lực chất lượng cao cho Vùng kinh tế trọng điểm Đồng bằng sông Cửu Long."
+    },
+    {
+      "DiscountID": 3,
+      "CampusID": 5,
+      "BatchID": 3,
+      "DiscountName": "Ưu đãi 50% học phí toàn khoá học",
+      "DiscountType": "percentage",
+      "DiscountValue": 50,
+      "Description": "Ưu đãi 50% học phí toàn khoá học dành cho sinh viên học tại campus Quy Nhơn, hỗ trợ phát triển 'thung lũng Silicon' Việt Nam."
+    }
+  ],
+  "scholarships": [
+    {
+      "ScholarshipID": 1,
+      "Name": "Học bổng Chuyên gia Toàn cầu",
+      "Description": "Miễn học phí toàn khóa học và tài trợ chi phí sinh hoạt 30 triệu đồng/năm. Sau khi tốt nghiệp được lựa chọn làm việc tại 1 trong 5 quốc gia: Mỹ, Nhật Bản, Hàn Quốc, Đức và Singapore.",
+      "Coverage": "Full",
+      "Value": 100.0,
+      "Requirements": "Thí sinh đạt giải Nhất/Nhì/Ba trong kỳ thi chọn học sinh giỏi cấp quốc gia, đăng ký học ngành Công nghệ thông tin và vượt qua phỏng vấn với giám đốc FPT tại các quốc gia.",
+      "ApplicationProcess": "Nộp đơn cho Trường Đại học FPT, vượt qua vòng hồ sơ và dự phỏng vấn.",
+      "TotalSlots": 100,
+      "IsActive": true
+    },
+    {
+      "ScholarshipID": 2,
+      "Name": "Học bổng Học đường",
+      "Description": "Miễn học phí toàn khóa học dành cho tất cả các trường THPT thuộc Khu vực 1, mỗi trường một suất.",
+      "Coverage": "Full",
+      "Value": 100.0,
+      "Requirements": "Học sinh có SchoolRank thuộc Top10, đăng ký nguyện vọng với Ban giám hiệu trường THPT.",
+      "ApplicationProcess": "Đăng ký nguyện vọng nhận học bổng với Ban giám hiệu trường THPT nơi đang học.",
+      "TotalSlots": 900,
+      "IsActive": true
+    },
+    {
+      "ScholarshipID": 3,
+      "Name": "Học bổng Toàn phần",
+      "Description": "Miễn học phí toàn khóa học.",
+      "Coverage": "Full",
+      "Value": 100.0,
+      "Requirements": "Nằm trong thành phần đội tuyển Olympic quốc tế hoặc đạt giải Nhất HSG quốc gia hoặc đạt điểm >= 90% thi đánh giá năng lực ĐHQG hoặc điểm TB >= 9 thi tốt nghiệp THPT (Toán + 2 môn).",
+      "ApplicationProcess": "Nộp hồ sơ chứng minh đạt tiêu chí.",
+      "TotalSlots": 300,
+      "IsActive": true,
+      "MaintenanceCondition": "Năm trước đó đạt kết quả học tập >= 7.0/10."
+    },
+    {
+      "ScholarshipID": 4,
+      "Name": "Học bổng 2 năm",
+      "Description": "Miễn học phí 2 năm đầu tiên.",
+      "Coverage": "Partial",
+      "Value": 50.0,
+      "Requirements": "Đạt giải Nhì HSG quốc gia hoặc đạt điểm >= 85% thi đánh giá năng lực ĐHQG hoặc điểm TB >= 8.5 thi tốt nghiệp THPT (Toán + 2 môn).",
+      "ApplicationProcess": "Nộp hồ sơ chứng minh đạt tiêu chí.",
+      "TotalSlots": 500,
+      "IsActive": true,
+      "MaintenanceCondition": "Năm trước đó đạt kết quả học tập >= 7.0/10."
+    },
+    {
+      "ScholarshipID": 5,
+      "Name": "Học bổng 1 năm",
+      "Description": "Miễn học phí năm đầu tiên.",
+      "Coverage": "Partial",
+      "Value": 25.0,
+      "Requirements": "Đạt giải Ba HSG quốc gia hoặc đạt điểm >= 80% thi đánh giá năng lực ĐHQG hoặc điểm TB >= 8 thi tốt nghiệp THPT (Toán + 2 môn).",
+      "ApplicationProcess": "Nộp hồ sơ chứng minh đạt tiêu chí.",
+      "TotalSlots": 1000,
+      "IsActive": true,
+      "MaintenanceCondition": "Năm trước đó đạt kết quả học tập >= 7.0/10."
+    }
+  ],
+  "englishLevels": [
+    {
+      "LevelID": 1,
+      "BatchID": 1,
+      "LevelNumber": 1,
+      "FeeAmount": 13100000,
+      "Description": "Mức 1/6 Tiếng Anh chuẩn bị tại HN & HCM",
+      "MaxLevel": 6
+    },
+    {
+      "LevelID": 2,
+      "BatchID": 2,
+      "LevelNumber": 1,
+      "FeeAmount": 9170000,
+      "Description": "Mức 1/6 Tiếng Anh chuẩn bị tại ĐN & CT",
+      "MaxLevel": 6
+    },
+    {
+      "LevelID": 3,
+      "BatchID": 3,
+      "LevelNumber": 1,
+      "FeeAmount": 6550000,
+      "Description": "Mức 1/6 Tiếng Anh chuẩn bị tại QN",
+      "MaxLevel": 6
+    }
+  ],
+  "admissionPlans": [
+    {
+      "PlanID": 1,
+      "AdmissionYearID": 1,
+      "PlanName": "Xét kết quả học tập cấp THPT (học bạ)",
+      "Method": "Portfolio",
+      "Description": "Ngưỡng đầu vào: Đạt Top 50 SchoolRank học bạ (dùng điểm lớp 11 và học kỳ 1 lớp 12) VÀ Điểm kỳ 2 năm lớp 12 của tổ hợp [Toán + 2 môn bất kỳ] >= 21."
+    },
+    {
+      "PlanID": 2,
+      "AdmissionYearID": 1,
+      "PlanName": "Sử dụng kết quả thi đánh giá năng lực",
+      "Method": "Exam",
+      "Description": "Sử dụng kết quả thi đánh giá năng lực của Đại học Quốc gia Hà Nội và Đại học Quốc gia TPHCM. Ngưỡng đầu vào: Đạt Top50 trong các kỳ thi này. Đợt 1: 80 điểm (ĐHQG HN), 609 điểm (ĐHQG TPHCM)."
+    },
+    {
+      "PlanID": 3,
+      "AdmissionYearID": 1,
+      "PlanName": "Xét kết quả thi tốt nghiệp THPT",
+      "Method": "Exam",
+      "Description": "Dùng tổ hợp [Toán + 2 môn bất kỳ + Điểm ưu tiên theo quy định của Bộ]. Ngưỡng đầu vào: Đạt Top50. Điểm cụ thể sẽ được công bố sau khi có kết quả thi THPT."
+    },
+    {
+      "PlanID": 4,
+      "AdmissionYearID": 1,
+      "PlanName": "Phương thức tuyển sinh khác",
+      "Method": "Direct",
+      "Description": "Thí sinh có một trong các văn bằng hoặc chứng chỉ sau đạt ngưỡng đầu vào: Tốt nghiệp BTEC HND; Melbourne Polytechnic; FUNiX Software Engineering; Cao đẳng FPT Polytechnic; THPT các trường thuộc Tổ chức Giáo dục FPT; THPT nước ngoài; APTECH HDSE/ADSE; ARENA ADIM; SKILLKING; JETKING."
+    }
+  ],
+  "majorAdmissionQuotas": [
+    {
+      "QuotaID": 1,
+      "MajorID": null,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 8125,
+      "Notes": "Chỉ tiêu chung cho toàn bộ nhóm ngành Công nghệ thông tin (bao gồm các chuyên ngành: Kỹ thuật phần mềm, Hệ thống thông tin, Trí tuệ nhân tạo, An toàn thông tin, Công nghệ ô tô số, Thiết kế vi mạch bán dẫn, Thiết kế mỹ thuật số)"
+    },
+    {
+      "QuotaID": 2,
+      "MajorID": null,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 3164,
+      "Notes": "Chỉ tiêu chung cho toàn bộ nhóm ngành Quản trị kinh doanh (bao gồm các chuyên ngành: Digital Marketing, Kinh doanh quốc tế, Tài chính doanh nghiệp, Ngân hàng số - Tài chính, Công nghệ tài chính, Tài chính đầu tư, Logistics & quản lý chuỗi cung ứng toàn cầu)"
+    },
+    {
+      "QuotaID": 3,
+      "MajorID": null,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 1073,
+      "Notes": "Chỉ tiêu chung cho toàn bộ nhóm ngành Công nghệ truyền thông (bao gồm các chuyên ngành: Truyền thông đa phương tiện, Quan hệ công chúng)"
+    },
+    {
+      "QuotaID": 4,
+      "MajorID": null,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 98,
+      "Notes": "Chỉ tiêu chung cho toàn bộ nhóm ngành Luật (bao gồm các chuyên ngành: Luật kinh tế, Luật thương mại quốc tế)"
+    },
+    {
+      "QuotaID": 5,
+      "MajorID": 19,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 302,
+      "Notes": "Chỉ tiêu cho ngành Ngôn ngữ Anh"
+    },
+    {
+      "QuotaID": 6,
+      "MajorID": 20,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 143,
+      "Notes": "Chỉ tiêu cho ngành Ngôn ngữ Trung Quốc"
+    },
+    {
+      "QuotaID": 7,
+      "MajorID": 21,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 68,
+      "Notes": "Chỉ tiêu cho ngành Ngôn ngữ Nhật"
+    },
+    {
+      "QuotaID": 8,
+      "MajorID": 22,
+      "AdmissionID": 1,
+      "CampusID": null,
+      "Quota": 154,
+      "Notes": "Chỉ tiêu cho ngành Ngôn ngữ Hàn Quốc"
+    }
+  ],
+  "curriculumFrameworks": [
+    {
+      "MajorID": 4,
+      "Name": "An toàn thông tin",
+      "phases": [
+        {
+          "PhaseID": 1,
+          "PhaseName": "Giai đoạn chuẩn bị",
+          "Duration": "2 tháng đến 1 năm (tùy theo năng lực đầu vào)",
+          "Objective": "Đạt trình độ tiếng Anh tương đương IELTS 6.0, hội nhập và thích nghi với môi trường đại học.",
+          "TypicalSubjects": [
+            "Giáo dục văn hóa truyền thống (Nhạc cụ)",
+            "Trang bị tiếng Anh",
+            "Vovinam",
+            "Định hướng & Rèn luyện tập trung"
+          ],
+          "DistinctiveFeatures": [
+            "Hội nhập và thích nghi để thành công trong giáo dục đại học.",
+            "Chuẩn bị vững vàng về ngôn ngữ, thể chất, nghệ thuật, văn hóa và tác phong học tập."
+          ]
+        },
+        {
+          "PhaseID": 2,
+          "PhaseName": "Giai đoạn Cơ bản và cơ sở",
+          "Duration": "5 học kỳ (Từ học kỳ 1 đến học kỳ 5)",
+          "Objective": "Trang bị kỹ năng, kiến thức nền tảng và chuyên ngành, giúp sinh viên sẵn sàng cho giai đoạn thực tập.",
+          "TypicalSubjects": [
+            "Nhập môn An toàn thông tin",
+            "Kết nối mạng",
+            "Phân tích mã độc và kỹ thuật dịch ngược",
+            "Điều tra số",
+            "Mật mã ứng dụng"
+          ],
+          "DistinctiveFeatures": [
+            "Sinh viên được trang bị kiến thức cơ bản về An toàn Thông tin và thực hành trên hệ thống Cisco hoặc mô phỏng giả lập.",
+            "Các học phần có tính thực tiễn cao."
+          ]
+        },
+        {
+          "PhaseID": 3,
+          "PhaseName": "Giai đoạn Học trong Doanh nghiệp - OJT",
+          "Duration": "1 học kỳ (học kỳ 6)",
+          "Objective": "Áp dụng kiến thức, kỹ năng vào công việc thực tế, có góc nhìn về định hướng nghề nghiệp.",
+          "TypicalSubjects": ["Thực tập tại doanh nghiệp"],
+          "DistinctiveFeatures": [
+            "Trải nghiệm thực tế tại doanh nghiệp sớm (vào học kỳ 6).",
+            "Được thực tập tại FPT và các Doanh nghiệp lớn.",
+            "Trường kết nối và sắp xếp doanh nghiệp thực tập.",
+            "Cơ hội việc làm cao sau khi hoàn thành OJT.",
+            "Đối tác OJT: VNPT IT, VNPT Media, NCSC, VSEC, VKIST."
+          ]
+        },
+        {
+          "PhaseID": 4,
+          "PhaseName": "Giai đoạn Chuyên môn sâu",
+          "Duration": "2 học kỳ (kỳ 7 & kỳ 8)",
+          "Objective": "Đào tạo kỹ năng chuyên sâu về các chủ đề: An toàn ứng dụng, An toàn hệ thống, Ứng dụng AI cho An toàn mạng.",
+          "TypicalSubjects": [
+            "Thâm nhập thử và phòng thủ",
+            "Phát triển chính sách ATTT",
+            "Cụm combo: Chủ đề An toàn ứng dụng",
+            "Cụm combo: Chủ đề An toàn hệ thống",
+            "Cụm combo: Chủ đề Ứng dụng TTNT cho An toàn mạng"
+          ],
+          "DistinctiveFeatures": [
+            "Phát triển kỹ năng ATTT theo hướng chuyên sâu và mở rộng.",
+            "Học tập qua dự án thực tế (Project-based learning).",
+            "Trải nghiệm khởi nghiệp."
+          ]
+        },
+        {
+          "PhaseID": 5,
+          "PhaseName": "Giai đoạn hoàn thành và tốt nghiệp",
+          "Duration": "1 học kỳ (kỳ 9)",
+          "Objective": "Áp dụng toàn bộ kiến thức đã học để thực hiện đồ án tốt nghiệp theo nhóm.",
+          "TypicalSubjects": [
+            "Đồ án tốt nghiệp/Luận văn tốt nghiệp",
+            "Dự án khởi nghiệp được hỗ trợ và đầu tư"
+          ],
+          "DistinctiveFeatures": [
+            "Thực hiện đồ án theo nhóm, xây dựng dự án thực tế.",
+            "Sản phẩm có tính thực tiễn, ứng dụng cao.",
+            "Triển khai đồ án dưới dạng nghiên cứu khoa học."
+          ]
+        }
+      ]
+    },
+    {
+      "MajorID": 12,
+      "Name": "Công nghệ tài chính (Fintech)",
+      "phases": [
+        {
+          "PhaseID": 1,
+          "PhaseName": "Giai đoạn chuẩn bị",
+          "Duration": "2 tháng đến 1 năm (tùy theo năng lực đầu vào)",
+          "Objective": "Đạt trình độ tiếng Anh tương đương IELTS 6.0, hội nhập và thích nghi với môi trường đại học.",
+          "TypicalSubjects": [
+            "Định hướng & Rèn luyện tập trung",
+            "Phương pháp học đại học",
+            "Học kỳ Tiếng Anh",
+            "Nhạc cụ dân tộc",
+            "Vovinam"
+          ],
+          "DistinctiveFeatures": [
+            "Hội nhập và thích nghi để thành công trong giáo dục đại học.",
+            "Chuẩn bị vững vàng về ngôn ngữ, thể chất, nghệ thuật, văn hóa và tác phong học tập."
+          ]
+        },
+        {
+          "PhaseID": 2,
+          "PhaseName": "Giai đoạn Cơ bản và cơ sở",
+          "Duration": "5 học kỳ (Từ kỳ 1 đến kỳ 5)",
+          "Objective": "Trang bị kỹ năng, kiến thức nền tảng và chuyên ngành, giúp sinh viên sẵn sàng cho giai đoạn thực tập.",
+          "TypicalSubjects": [
+            "Tài chính doanh nghiệp (Principles of Corporate Finance)",
+            "Phân tích dữ liệu kinh doanh (Business Data Analytics)",
+            "Học máy (Machine Learning)",
+            "Blockchain và tài chính phi tập trung (Blockchain and Decentralized Finance)",
+            "Thị trường tài chính & định chế tài chính (Financial Markets and Institutions)"
+          ],
+          "DistinctiveFeatures": [
+            "Chương trình là sự kết hợp của Khối kiến thức Quản trị kinh doanh (chuẩn ACBSP) và Khối chuyên sâu về Công nghệ Fintech.",
+            "Nội dung kiến thức Fintech tập trung vào 4 nhóm chính: Phân tích dữ liệu, Công nghệ cốt lõi, Phân tích tài chính chuyên sâu, Ứng dụng công nghệ Fintech hiện nay.",
+            "Chương trình mang tính ứng dụng cao, phù hợp với sinh viên Quản trị kinh doanh."
+          ]
+        },
+        {
+          "PhaseID": 3,
+          "PhaseName": "Giai đoạn Học trong Doanh nghiệp - OJT",
+          "Duration": "1 học kỳ (học kỳ 6)",
+          "Objective": "Áp dụng kiến thức, kỹ năng vào công việc thực tế tại doanh nghiệp.",
+          "TypicalSubjects": ["Thực tập tại doanh nghiệp"],
+          "DistinctiveFeatures": [
+            "Trải nghiệm thực tế tại doanh nghiệp sớm (vào học kỳ 6).",
+            "Được thực tập tại FPT và các Doanh nghiệp lớn.",
+            "Đối tác OJT: Astoria Hotels and Resorts (Philippines), Nanyang Polytechnic (Singapore), Hong Kong Productivity Council (Hongkong)."
+          ]
+        },
+        {
+          "PhaseID": 4,
+          "PhaseName": "Giai đoạn Chuyên môn sâu",
+          "Duration": "2 học kỳ (kỳ 7 & kỳ 8)",
+          "Objective": "Học chuyên sâu, cập nhật hiện đại, bám sát nhu cầu thực tiễn của thị trường công nghiệp.",
+          "TypicalSubjects": [
+            "Applied Financial modeling and Risk management",
+            "Investments and Portfolio Management",
+            "Combo 1: Investment and Asset Management",
+            "Combo 2: Blockchain and Cryptocurrency",
+            "Combo 3: Big data and AI"
+          ],
+          "DistinctiveFeatures": [
+            "Sinh viên học Phân tích tài chính chuyên sâu, yêu cầu kiến thức tích lũy.",
+            "Sinh viên chọn một trong ba nhánh chuyên sâu (Combo) theo xu hướng Fintech hiện nay."
+          ]
+        },
+        {
+          "PhaseID": 5,
+          "PhaseName": "Giai đoạn hoàn thành và tốt nghiệp",
+          "Duration": "1 học kỳ (kỳ 9)",
+          "Objective": "Áp dụng toàn bộ kiến thức đã học để thực hiện đồ án tốt nghiệp theo nhóm.",
+          "TypicalSubjects": [
+            "Đồ án tốt nghiệp/Luận văn tốt nghiệp",
+            "Dự án khởi nghiệp được hỗ trợ và đầu tư"
+          ],
+          "DistinctiveFeatures": []
+        }
+      ]
+    },
+    {
+      "MajorID": 19,
+      "Name": "Ngôn ngữ Anh",
+      "phases": [
+        {
+          "PhaseID": 1,
+          "PhaseName": "Giai đoạn chuẩn bị",
+          "Duration": "2 tháng đến 1 năm (tùy theo năng lực đầu vào)",
+          "Objective": "Đạt trình độ tiếng Anh tương đương IELTS 6.0.",
+          "TypicalSubjects": [
+            "Định hướng & Rèn luyện tập trung",
+            "Phương pháp học đại học",
+            "Học kỳ Tiếng Anh",
+            "Nhạc cụ dân tộc",
+            "Vovinam"
+          ],
+          "DistinctiveFeatures": [
+            "Học trên nền tảng Coursera, rèn luyện kỹ năng học online và suốt đời.",
+            "Trải nghiệm du học tiếng Anh hoặc quốc tế sớm.",
+            "Bồi dưỡng lòng tự hào văn hóa, lịch sử dân tộc."
+          ]
+        },
+        {
+          "PhaseID": 2,
+          "PhaseName": "Giai đoạn Cơ bản và cơ sở",
+          "Duration": "5 học kỳ (Từ kỳ 1 đến kỳ 5)",
+          "Objective": "Trang bị kỹ năng, kiến thức nền tảng và chuyên ngành.",
+          "TypicalSubjects": [
+            "Critical Reading in English (HK1)",
+            "Academic English Writing (HK2)",
+            "Introduction to Linguistics (HK2)",
+            "Culture of English-Speaking Countries (HK3)",
+            "English Semantics"
+          ],
+          "DistinctiveFeatures": [
+            "Chương trình học kết hợp lý thuyết – thực hành – công nghệ – trải nghiệm thực tế.",
+            "Rèn luyện tư duy phản biện & phân tích logic.",
+            "Sử dụng AI, ChatGPT hỗ trợ nghiên cứu, viết luận.",
+            "Giao tiếp đa văn hóa qua kết nối với khách mời quốc tế."
+          ]
+        },
+        {
+          "PhaseID": 3,
+          "PhaseName": "Giai đoạn Học trong Doanh nghiệp - OJT",
+          "Duration": "1 học kỳ (học kỳ 6)",
+          "Objective": "Áp dụng kiến thức, kỹ năng vào công việc thực tế tại các công ty thuộc Tập đoàn FPT hoặc doanh nghiệp lớn trong và ngoài nước.",
+          "TypicalSubjects": ["Thực tập tại doanh nghiệp"],
+          "DistinctiveFeatures": [
+            "Đối tác OJT: Astoria Hotels and Resorts, World Citi College (Philippines); Janu Hotel (Nhật Bản)."
+          ]
+        },
+        {
+          "PhaseID": 4,
+          "PhaseName": "Giai đoạn Chuyên môn sâu",
+          "Duration": "2 học kỳ (kỳ 7 & kỳ 8)",
+          "Objective": "Học chuyên sâu, cập nhật hiện đại, bám sát nhu cầu thực tiễn.",
+          "TypicalSubjects": [
+            "English Translation 1 & 2",
+            "English Interpretation 1 & 2",
+            "Sociolinguistics (HK7)",
+            "Research Methods (HK8)",
+            "Chuyên ngành hẹp (combo): English Teaching, Advanced English Translation, Multimedia Communications, International Business"
+          ],
+          "DistinctiveFeatures": [
+            "Nâng cao kỹ năng nghe, nói (tiệm cận C1), ứng dụng ChatGPT/OpenAI.",
+            "Học tập thực tế qua thảo luận, dự án, đi thực địa.",
+            "Nhiều chuyên ngành hẹp, kết hợp lý thuyết & thực hành."
+          ]
+        },
+        {
+          "PhaseID": 5,
+          "PhaseName": "Giai đoạn hoàn thành và tốt nghiệp",
+          "Duration": "1 học kỳ (kỳ 9)",
+          "Objective": "Vận dụng kiến thức & kinh nghiệm, hoàn thành chương trình đào tạo.",
+          "TypicalSubjects": [
+            "Đồ án tốt nghiệp/Luận văn tốt nghiệp",
+            "Dự án khởi nghiệp được hỗ trợ và đầu tư"
+          ],
+          "DistinctiveFeatures": [
+            "Làm theo nhóm 3-4 sinh viên, rèn kỹ năng làm việc nhóm & nghiên cứu.",
+            "Ứng dụng kiến thức chuyên sâu vào ngôn ngữ, xã hội, văn hóa, giáo dục.",
+            "Chứng minh năng lực C1, tư duy phản biện & logic."
+          ]
+        }
+      ]
+    }
+  ],
+  "englishExchangePrograms": [
+    {
+      "ProgramID": 1,
+      "ProgramName": "Chương trình trao đổi tiếng Anh tại nước ngoài",
+      "Description": "Là một phần của giai đoạn chuẩn bị, chương trình giúp sinh viên trải nghiệm môi trường học tập quốc tế, nâng cao trình độ tiếng Anh và kỹ năng giao tiếp đa văn hóa trước khi bước vào các học kỳ chuyên ngành. Chương trình được triển khai tại nhiều quốc gia và các trường đại học đối tác uy tín.",
+      "destinations": [
+        {
+          "CountryID": 1,
+          "CountryName": "Thái Lan",
+          "partnerUniversities": [
+            {
+              "UniversityID": 1,
+              "UniversityName": "Kasem Bundit University"
+            },
+            {
+              "UniversityID": 2,
+              "UniversityName": "Chulalongkorn University"
+            },
+            {
+              "UniversityID": 3,
+              "UniversityName": "Dhurakij Pundit University"
+            }
+          ]
+        },
+        {
+          "CountryID": 2,
+          "CountryName": "Malaysia",
+          "partnerUniversities": [
+            {
+              "UniversityID": 4,
+              "UniversityName": "University of Kuala Lumpur"
+            },
+            {
+              "UniversityID": 5,
+              "UniversityName": "TAR UMT University"
+            },
+            {
+              "UniversityID": 6,
+              "UniversityName": "UOW"
+            },
+            {
+              "UniversityID": 7,
+              "UniversityName": "UCSI"
+            },
+            {
+              "UniversityID": 8,
+              "UniversityName": "HELP"
+            },
+            {
+              "UniversityID": 9,
+              "UniversityName": "UNIMAS"
+            },
+            {
+              "UniversityID": 10,
+              "UniversityName": "UTP"
+            },
+            {
+              "UniversityID": 11,
+              "UniversityName": "Segi University"
+            }
+          ]
+        },
+        {
+          "CountryID": 3,
+          "CountryName": "Philippines",
+          "partnerUniversities": [
+            {
+              "UniversityID": 12,
+              "UniversityName": "Đại học Quốc gia Philippines"
+            },
+            {
+              "UniversityID": 13,
+              "UniversityName": "Lapu Cebu International College (LCIC)"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

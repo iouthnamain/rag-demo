@@ -249,23 +249,139 @@ TRẢ LỜI (bằng tiếng Việt, định dạng Markdown):`;
 
   /**
    * Check if a question is career-related or general conversation
+   * Prioritizes FPT School counseling over general chat - very aggressive classification
    */
   public isCareerRelatedQuestion(question: string): boolean {
-    const careerKeywords = [
-      'nghề nghiệp', 'career', 'công việc', 'job', 'work',
-      'kỹ năng', 'skill', 'năng lực', 'ability',
-      'tuyển dụng', 'recruitment', 'phỏng vấn', 'interview',
-      'lương', 'salary', 'thu nhập', 'income',
-      'thăng tiến', 'promotion', 'phát triển', 'development',
-      'học tập', 'learning', 'đào tạo', 'training',
-      'kinh nghiệm', 'experience', 'chuyên môn', 'expertise',
-      'ngành', 'industry', 'lĩnh vực', 'field',
-      'cv', 'resume', 'hồ sơ', 'profile',
-      'tương lai', 'future', 'định hướng', 'direction'
+    const questionLower = question.toLowerCase();
+    
+    // Immediate FPT School and education keywords - always career-related
+    const fptEducationKeywords = [
+      'fpt', 'school', 'trường', 'đại học', 'cao đẳng', 'university', 'college',
+      'học phí', 'tuition', 'chi phí', 'cost', 'học bổng', 'scholarship',
+      'tuyển sinh', 'admission', 'đăng ký', 'register', 'nhập học', 'enroll',
+      'chương trình', 'program', 'khóa học', 'course', 'môn học', 'subject',
+      'giảng viên', 'teacher', 'thầy cô', 'instructor', 'mentor',
+      'bằng cấp', 'degree', 'chứng chỉ', 'certificate', 'diploma',
+      'tốt nghiệp', 'graduate', 'ra trường', 'finish', 'hoàn thành',
+      'thực tập', 'internship', 'practice', 'thực hành', 'hands-on',
+      'dự án', 'project', 'bài tập', 'assignment', 'lab'
     ];
     
-    const questionLower = question.toLowerCase();
-    return careerKeywords.some(keyword => questionLower.includes(keyword));
+    // Technology and career keywords - always career-related
+    const techCareerKeywords = [
+      'it', 'công nghệ thông tin', 'information technology', 'technology',
+      'lập trình', 'programming', 'code', 'coding', 'developer', 'dev',
+      'phần mềm', 'software', 'ứng dụng', 'application', 'app',
+      'web', 'website', 'frontend', 'backend', 'fullstack',
+      'data', 'dữ liệu', 'database', 'cơ sở dữ liệu', 'sql',
+      'ai', 'artificial intelligence', 'machine learning', 'ml',
+      'cybersecurity', 'an ninh mạng', 'bảo mật', 'security', 'hack',
+      'thiết kế', 'design', 'graphic', 'đồ họa', 'ui', 'ux',
+      'marketing', 'digital marketing', 'social media', 'quảng cáo',
+      'business', 'kinh doanh', 'thương mại', 'quản lý', 'management'
+    ];
+    
+    // Career and work-related keywords
+    const careerKeywords = [
+      'nghề nghiệp', 'career', 'công việc', 'job', 'work', 'việc làm',
+      'kỹ năng', 'skill', 'năng lực', 'ability', 'competency',
+      'tuyển dụng', 'recruitment', 'phỏng vấn', 'interview', 'hiring',
+      'lương', 'salary', 'thu nhập', 'income', 'wage', 'pay',
+      'thăng tiến', 'promotion', 'phát triển', 'development', 'growth',
+      'học tập', 'learning', 'đào tạo', 'training', 'education',
+      'kinh nghiệm', 'experience', 'chuyên môn', 'expertise', 'professional',
+      'ngành', 'industry', 'lĩnh vực', 'field', 'sector', 'domain',
+      'cv', 'resume', 'hồ sơ', 'profile', 'portfolio',
+      'tương lai', 'future', 'định hướng', 'direction', 'path', 'plan',
+      'cơ hội', 'opportunity', 'triển vọng', 'prospect', 'potential',
+      'mục tiêu', 'goal', 'target', 'objective', 'aim'
+    ];
+    
+    // Learning and academic keywords
+    const learningKeywords = [
+      'học', 'learn', 'study', 'studies', 'academic', 'education',
+      'kiến thức', 'knowledge', 'hiểu biết', 'understanding',
+      'tài liệu', 'document', 'material', 'resource',
+      'sách', 'book', 'reading', 'research', 'nghiên cứu',
+      'thông tin', 'information', 'info', 'data', 'detail',
+      'hướng dẫn', 'guide', 'tutorial', 'instruction',
+      'cách', 'how', 'làm sao', 'way', 'method', 'approach'
+    ];
+    
+    // General interest keywords that could be education-related
+    const generalInterestKeywords = [
+      'gì', 'what', 'nào', 'which', 'như thế nào', 'how',
+      'tại sao', 'why', 'bao nhiêu', 'how much', 'when', 'khi nào',
+      'ở đâu', 'where', 'có', 'is', 'are', 'can', 'có thể'
+    ];
+    
+    // Only exclude very specific non-career topics
+    const definitivelyNotCareerKeywords = [
+      'thời tiết', 'weather', 'ăn uống', 'food', 'du lịch', 'travel',
+      'phim', 'movie', 'nhạc', 'music', 'thể thao', 'sport',
+      'game', 'trò chơi', 'giải trí', 'entertainment',
+      'yêu đương', 'love', 'tình yêu', 'relationship',
+      'sức khỏe', 'health', 'bệnh', 'sick', 'y tế', 'medical'
+    ];
+    
+    // Check if definitely not career-related
+    const isDefinitelyNotCareer = definitivelyNotCareerKeywords.some(keyword => 
+      questionLower.includes(keyword)
+    );
+    
+    if (isDefinitelyNotCareer) {
+      return false;
+    }
+    
+    // Check FPT/Education keywords (highest priority)
+    const hasFptEducationKeywords = fptEducationKeywords.some(keyword => 
+      questionLower.includes(keyword)
+    );
+    
+    if (hasFptEducationKeywords) {
+      return true;
+    }
+    
+    // Check tech/career keywords (high priority)
+    const hasTechCareerKeywords = techCareerKeywords.some(keyword => 
+      questionLower.includes(keyword)
+    );
+    
+    if (hasTechCareerKeywords) {
+      return true;
+    }
+    
+    // Check general career keywords
+    const hasCareerKeywords = careerKeywords.some(keyword => 
+      questionLower.includes(keyword)
+    );
+    
+    if (hasCareerKeywords) {
+      return true;
+    }
+    
+    // Check learning keywords
+    const hasLearningKeywords = learningKeywords.some(keyword => 
+      questionLower.includes(keyword)
+    );
+    
+    if (hasLearningKeywords) {
+      return true;
+    }
+    
+    // For very general questions, default to career-related to prioritize document content
+    const hasGeneralKeywords = generalInterestKeywords.some(keyword => 
+      questionLower.includes(keyword)
+    );
+    
+    if (hasGeneralKeywords && questionLower.length > 10) {
+      // If it's a substantial question with general inquiry words, treat as career-related
+      return true;
+    }
+    
+    // Default to career-related unless explicitly non-career
+    // This ensures we prioritize FPT document content
+    return true;
   }
 
   /**

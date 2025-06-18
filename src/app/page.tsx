@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { UserPreferencesService } from '@/lib/services/userPreferencesService';
+import WelcomeCard from './_components/WelcomeCard';
 
 interface ChatMessage {
   id: string;
@@ -59,6 +61,8 @@ export default function Home() {
   const isHydrated = useHydration();
   const [conversationId, setConversationId] = useState(() => Date.now().toString());
   const [webSearchEnabled, setWebSearchEnabled] = useState(false);
+  const [hasUserPreferences, setHasUserPreferences] = useState(false);
+  const [personalizedGreeting, setPersonalizedGreeting] = useState('');
 
   // Reset conversation function
   const resetConversation = () => {
@@ -137,19 +141,36 @@ export default function Home() {
     }
   };
 
+  // Handle quick question clicks
+  const handleQuestionClick = (question: string) => {
+    setInputMessage(question);
+    // Auto-send the question
+    setTimeout(() => {
+      if (systemStatus?.isReady) {
+        sendMessageWithText(question);
+      }
+    }, 100);
+  };
+
   // Send message
   const sendMessage = async () => {
-    if (!inputMessage.trim() || isLoading) return;
+    await sendMessageWithText();
+  };
+
+  // Send message with custom text
+  const sendMessageWithText = async (messageText?: string) => {
+    const text = messageText || inputMessage.trim();
+    if (!text || isLoading) return;
 
     const userMessage: ChatMessage = {
       id: generateId(),
       type: 'user',
-      content: inputMessage.trim(),
+      content: text,
       timestamp: new Date(),
     };
 
     setMessages(prev => [...prev, userMessage]);
-    setInputMessage("");
+    if (!messageText) setInputMessage(""); // Only clear if using current input
     setIsLoading(true);
 
     try {
@@ -159,7 +180,7 @@ export default function Home() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ 
-          question: inputMessage.trim(),
+          question: text,
           conversationId: conversationId,
           webSearchEnabled: webSearchEnabled
         }),
@@ -274,6 +295,16 @@ export default function Home() {
       
       // Try to send any pending feedback
       void retryPendingFeedback();
+      
+      // Load user preferences
+      const preferencesService = UserPreferencesService.getInstance();
+      const hasPrefs = preferencesService.hasPreferences();
+      setHasUserPreferences(hasPrefs);
+      
+      if (hasPrefs) {
+        const greeting = preferencesService.buildPersonalizedGreeting();
+        setPersonalizedGreeting(greeting);
+      }
     }
   }, [isHydrated]);
 
@@ -364,12 +395,12 @@ export default function Home() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            🤖 Chatbot Tư Vấn Nghề Nghiệp
-          </h1>
-          <p className="text-gray-600">
-            Hệ thống RAG (Retrieval-Augmented Generation) với NextJS + Pinecone + Gemini AI
-          </p>
+                      <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              🎓 Trợ lý Tư vấn Tuyển sinh FPT School
+            </h1>
+            <p className="text-gray-600">
+              Hệ thống AI hỗ trợ định hướng ngành học và nghề nghiệp công nghệ
+            </p>
           
           {/* System Status */}
           {systemStatus && (
@@ -402,6 +433,16 @@ export default function Home() {
                 >
                   {isIngesting ? 'Đang khởi tạo...' : 'Khởi tạo dữ liệu'}
                 </button>
+                                  <button
+                    onClick={() => window.location.href = '/preferences'}
+                    className="px-3 py-1 bg-purple-100 text-purple-700 rounded-md hover:bg-purple-200 text-sm flex items-center"
+                    title="Cá nhân hóa trợ lý tư vấn"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    Cá nhân hóa
+                  </button>
                 <button
                   onClick={resetConversation}
                   className="px-3 py-1 bg-red-100 text-red-700 rounded-md hover:bg-red-200 text-sm flex items-center group relative"
@@ -425,13 +466,12 @@ export default function Home() {
           {/* Chat Messages */}
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
             {messages.length === 0 && (
-              <div className="flex justify-center items-center h-32">
-                <div className="text-center text-gray-500">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12 mx-auto mb-2 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                  </svg>
-                  <p>Chưa có tin nhắn nào. Hãy bắt đầu cuộc trò chuyện!</p>
-                </div>
+              <div className="p-4">
+                <WelcomeCard 
+                  hasPreferences={hasUserPreferences} 
+                  personalizedGreeting={personalizedGreeting} 
+                  onQuestionClick={handleQuestionClick}
+                />
               </div>
             )}
             {messages.map((message, index) => (
@@ -453,7 +493,7 @@ export default function Home() {
                       <span className={`px-2 py-1 rounded-full text-white ${
                         message.isCareerRelated ? 'bg-green-500' : 'bg-blue-500'
                       }`}>
-                        {message.isCareerRelated ? '💼 Tư vấn nghề nghiệp' : '💬 Trò chuyện'}
+                        {message.isCareerRelated ? '🎓 Tư vấn FPT School' : '💬 Trò chuyện'}
                       </span>
                       {message.usedWebSearch && (
                         <span className="px-2 py-1 rounded-full bg-purple-500 text-white">

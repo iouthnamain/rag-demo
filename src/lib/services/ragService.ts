@@ -2,6 +2,7 @@ import { PineconeService } from './pinecone';
 import { GeminiService } from './gemini';
 import { FeedbackService } from './feedbackService';
 import { WebSearchService } from './webSearchService';
+import { UserPreferencesService } from './userPreferencesService';
 import DocumentProcessorService from './documentProcessor';
 import path from 'path';
 
@@ -124,9 +125,9 @@ export class RAGService {
       // Add user message to conversation history
       feedbackService.addMessage(conversationId, 'user', question);
       
-      // Check if question is career-related
+      // Check if question is career-related (very aggressive classification now)
       const isCareerRelated = geminiService.isCareerRelatedQuestion(question);
-      console.log(`🎯 Question type: ${isCareerRelated ? 'Career-related' : 'General conversation'}`);
+      console.log(`🎯 Question type: ${isCareerRelated ? 'Career-related (using FPT documents)' : 'General conversation'}`);
 
       let answer: string;
       let sources: string[] = [];
@@ -136,7 +137,8 @@ export class RAGService {
       let usedWebSearch = false;
 
       if (isCareerRelated) {
-        // Career-related question - use RAG with documents
+        // Career-related question - ALWAYS use RAG with FPT documents first
+        console.log('📚 Prioritizing FPT School document content...');
         const ragResult = await this.processCareerQuestion(question, conversationId, webSearchEnabled);
         answer = ragResult.answer;
         sources = ragResult.sources;
@@ -145,7 +147,8 @@ export class RAGService {
         confidence = ragResult.confidence;
         usedWebSearch = ragResult.usedWebSearch || false;
       } else {
-        // General conversation - use general AI response
+        // Only truly general conversation (very rare now) - use general AI response
+        console.log('💬 Processing as general conversation...');
         if (webSearchEnabled) {
           const webResult = await this.processGeneralQuestionWithWebSearch(question, conversationId);
           answer = webResult.answer;
@@ -228,16 +231,17 @@ export class RAGService {
     // Generate embedding for the question
     const questionEmbedding = await geminiService.generateEmbedding(question);
     
-    // Search for relevant documents
+    // Search for relevant documents - get more results to ensure coverage
     const searchResults = await this.pineconeService.similaritySearch(
       questionEmbedding,
-      5 // top 5 results
+      8 // top 8 results for better coverage
     );
     
     console.log(`🔍 Found ${searchResults.length} search results`);
     
-    // Check if we have relevant results (score threshold)
-    const relevantResults = searchResults.filter(result => result.score > 0.3);
+    // Use MUCH lower threshold to prioritize document content over general knowledge
+    // For FPT School counseling, even loosely related content is better than generic responses
+    const relevantResults = searchResults.filter(result => result.score > 0.15);
     
     let webSources: string[] = [];
     let webContext = '';
@@ -260,9 +264,44 @@ export class RAGService {
     }
 
     if (relevantResults.length === 0) {
-      console.log('ℹ️ No relevant documents found, using general career knowledge');
+      console.log('ℹ️ No high-score documents found, trying with ANY available document content...');
       
-      // Combine document knowledge with web search if available
+      // Try again with even lower threshold to get SOME document content
+      const anyResults = searchResults.filter(result => result.score > 0.05);
+      
+      if (anyResults.length > 0) {
+        console.log(`📄 Using ${anyResults.length} low-score documents as better than no documents`);
+        // Use the low-score documents anyway - FPT documents are better than no documents
+        const contextText = anyResults
+          .map(result => result.metadata?.text || '')
+          .join('\n\n');
+        
+        const sources = [...new Set(anyResults
+          .map(result => result.metadata?.source || 'unknown')
+          .filter(source => source !== 'unknown'))];
+        
+        // Combine with web search if available
+        let combinedContext = contextText;
+        if (webContext) {
+          combinedContext = `${contextText}\n\nTHÔNG TIN BỔ SUNG TỪ WEB:\n${webContext}`;
+        }
+        
+        const contextualPrompt = this.buildContextualCareerPrompt(question, conversationContext, combinedContext);
+        const answer = await geminiService.generateAnswer(question, combinedContext, contextualPrompt);
+        
+        return {
+          answer,
+          sources,
+          webSources: webSources.length > 0 ? webSources : undefined,
+          hasRelevantContent: true, // Still mark as relevant since we used FPT documents
+          confidence: webSources.length > 0 ? 0.65 : 0.55, // Lower confidence but still document-based
+          usedWebSearch,
+        };
+      }
+      
+      console.log('⚠️ Absolutely no document content found, using general career knowledge');
+      
+      // Only fall back to general knowledge if NO documents found at all
       let combinedContext = '';
       if (webContext) {
         combinedContext = `THÔNG TIN TỪ WEB:\n${webContext}\n\n`;
@@ -333,6 +372,7 @@ export class RAGService {
   ): Promise<string> {
     const geminiService = GeminiService.getInstance();
     const feedbackService = FeedbackService.getInstance();
+    const preferencesService = UserPreferencesService.getInstance();
     
     // Get conversation context
     const conversationContext = feedbackService.getConversationContext(conversationId, 3);
@@ -344,15 +384,28 @@ export class RAGService {
       return learnedResponses[Math.floor(Math.random() * learnedResponses.length)];
     }
     
+    // Get user preferences for personalization
+    const userContext = preferencesService.getUserContext();
+    const personalityInstruction = preferencesService.getPersonalityInstruction();
+    
     // Generate contextual general response
     let contextualQuestion = question;
+    
+    // Add user preferences to context
+    let fullContext = personalityInstruction;
+    if (userContext) {
+      fullContext += userContext;
+    }
+    
     if (conversationContext.length > 0) {
       const recentContext = conversationContext
         .slice(-2)
         .map(msg => `${msg.role}: ${msg.content}`)
         .join('\n');
       
-      contextualQuestion = `Ngữ cảnh cuộc trò chuyện:\n${recentContext}\n\nCâu hỏi hiện tại: ${question}`;
+      contextualQuestion = `${fullContext}\n\nNgữ cảnh cuộc trò chuyện:\n${recentContext}\n\nCâu hỏi hiện tại: ${question}`;
+    } else {
+      contextualQuestion = `${fullContext}\n\nCâu hỏi: ${question}`;
     }
     
     return await geminiService.generateGeneralResponse(contextualQuestion);
@@ -371,9 +424,12 @@ export class RAGService {
     const geminiService = GeminiService.getInstance();
     const feedbackService = FeedbackService.getInstance();
     const webSearchService = WebSearchService.getInstance();
+    const preferencesService = UserPreferencesService.getInstance();
     
-    // Get conversation context
+    // Get conversation context and user preferences
     const conversationContext = feedbackService.getConversationContext(conversationId, 3);
+    const userContext = preferencesService.getUserContext();
+    const personalityInstruction = preferencesService.getPersonalityInstruction();
     
     try {
       // Perform web search
@@ -382,17 +438,22 @@ export class RAGService {
       
       console.log(`🔍 Web search for general question completed: ${webResults.results.length} results`);
       
-      // Build prompt with web context
+      // Build prompt with web context and user preferences
       let contextualQuestion = question;
+      let fullContext = personalityInstruction;
+      if (userContext) {
+        fullContext += userContext;
+      }
+      
       if (conversationContext.length > 0) {
         const recentContext = conversationContext
           .slice(-2)
           .map(msg => `${msg.role}: ${msg.content}`)
           .join('\n');
         
-        contextualQuestion = `Ngữ cảnh cuộc trò chuyện:\n${recentContext}\n\nThông tin từ web:\n${webInfo.combinedContent}\n\nCâu hỏi hiện tại: ${question}`;
+        contextualQuestion = `${fullContext}\n\nNgữ cảnh cuộc trò chuyện:\n${recentContext}\n\nThông tin từ web:\n${webInfo.combinedContent}\n\nCâu hỏi hiện tại: ${question}`;
       } else {
-        contextualQuestion = `Thông tin từ web:\n${webInfo.combinedContent}\n\nCâu hỏi: ${question}`;
+        contextualQuestion = `${fullContext}\n\nThông tin từ web:\n${webInfo.combinedContent}\n\nCâu hỏi: ${question}`;
       }
       
       const answer = await geminiService.generateGeneralResponse(contextualQuestion);
@@ -404,15 +465,22 @@ export class RAGService {
     } catch (error) {
       console.error('⚠️ Web search failed for general question:', error);
       
-      // Fallback to regular general response
+      // Fallback to regular general response with user preferences
       let contextualQuestion = question;
+      let fullContext = personalityInstruction;
+      if (userContext) {
+        fullContext += userContext;
+      }
+      
       if (conversationContext.length > 0) {
         const recentContext = conversationContext
           .slice(-2)
           .map(msg => `${msg.role}: ${msg.content}`)
           .join('\n');
         
-        contextualQuestion = `Ngữ cảnh cuộc trò chuyện:\n${recentContext}\n\nCâu hỏi hiện tại: ${question}`;
+        contextualQuestion = `${fullContext}\n\nNgữ cảnh cuộc trò chuyện:\n${recentContext}\n\nCâu hỏi hiện tại: ${question}`;
+      } else {
+        contextualQuestion = `${fullContext}\n\nCâu hỏi: ${question}`;
       }
       
       const answer = await geminiService.generateGeneralResponse(contextualQuestion);
@@ -431,19 +499,38 @@ export class RAGService {
     conversationContext: Array<{ role: 'user' | 'assistant'; content: string; isCareerRelated?: boolean }>,
     documentContext?: string
   ): string {
-    let prompt = `Bạn là một chuyên gia tư vấn nghề nghiệp với kinh nghiệm sâu rộng. Hãy trả lời câu hỏi một cách chuyên nghiệp và hữu ích.
+    // Get user preferences for personalization
+    const preferencesService = UserPreferencesService.getInstance();
+    const userContext = preferencesService.getUserContext();
+    const personalityInstruction = preferencesService.getPersonalityInstruction();
 
-NGUYÊN TẮC:
-1. Trả lời bằng tiếng Việt
-2. Đưa ra lời khuyên cụ thể và thực tế
-3. Sử dụng thông tin từ tài liệu được cung cấp nếu có
-4. Tham khảo ngữ cảnh cuộc trò chuyện trước đó
-5. **ĐỊNH DẠNG**: Sử dụng Markdown để định dạng câu trả lời:
-   - Dùng **in đậm** cho các điểm quan trọng
-   - Dùng *in nghiêng* cho nhấn mạnh
-   - Dùng danh sách có dấu đầu dòng (-) hoặc số (1.) khi liệt kê
-   - Dùng > để trích dẫn thông tin từ tài liệu
-   - Dùng \`code\` cho thuật ngữ chuyên môn`;
+    let prompt = `Bạn là chuyên gia tư vấn tuyển sinh của FPT School - trường đào tạo công nghệ hàng đầu Việt Nam. Bạn có kinh nghiệm sâu rộng về các ngành học công nghệ, xu hướng thị trường lao động và định hướng nghề nghiệp cho sinh viên.
+
+${userContext}
+
+BỐI CẢNH FPT SCHOOL:
+- Chuyên đào tạo các ngành công nghệ: Công nghệ thông tin, An ninh mạng, Thiết kế đồ họa, Marketing số, Kinh doanh quốc tế
+- Phương pháp học tập thực hành, dự án thực tế từ doanh nghiệp
+- Cơ hội thực tập và làm việc tại hệ sinh thái FPT Corporation
+- Môi trường học tập quốc tế với nhiều chương trình trao đổi
+
+NGUYÊN TẮC TƯ VẤN (QUAN TRỌNG):
+1. **ƯU TIÊN TUYỆT ĐỐI**: Luôn dựa vào thông tin từ tài liệu FPT School được cung cấp
+2. **TẬP TRUNG FPT SCHOOL**: Mọi lời khuyên phải liên kết với các chương trình đào tạo của FPT School
+3. Trả lời bằng tiếng Việt, thân thiện và dễ hiểu cho học sinh THPT và phụ huynh
+4. Định hướng cụ thể về ngành học và nghề nghiệp tại FPT School
+5. **TRÍCH DẪN TÀI LIỆU**: Luôn trích dẫn và tham khảo thông tin từ tài liệu FPT School
+6. Đưa ra lời khuyên thực tế về cơ hội việc làm sau khi tốt nghiệp FPT School
+7. Kết nối với hệ sinh thái FPT Corporation và đối tác doanh nghiệp
+8. ${personalityInstruction}
+9. **ĐỊNH DẠNG MARKDOWN**: 
+   - Dùng **in đậm** cho tên ngành học FPT School, cơ hội nghề nghiệp
+   - Dùng *in nghiêng* để nhấn mạnh điểm mạnh của FPT School
+   - Dùng danh sách (-) để liệt kê chương trình học, kỹ năng FPT đào tạo
+   - Dùng > để trích dẫn TRỰC TIẾP thông tin từ tài liệu FPT School
+   - Dùng \`code\` cho công nghệ, kỹ năng được dạy tại FPT School
+   
+**CHỈ THỊ ĐẶC BIỆT**: Nếu có thông tin từ tài liệu FPT School, bắt buộc phải sử dụng và trích dẫn. Không được tự suy diễn khi đã có tài liệu chính thức.`;
 
     // Add conversation context if available
     if (conversationContext.length > 0) {
